@@ -39,7 +39,7 @@ end
 run = function()
     init('.', true)
 
-    require 'test.init'.run()
+    require 'nd.lib.test' {}
 end
 
 return {
