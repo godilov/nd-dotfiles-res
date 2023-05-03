@@ -11,5 +11,11 @@ return function(palette, accent)
     nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type value')
 
     return {
+        IndentBlanklineChar               = { fg = palette.black.light, bg = nil, sp = nil, link = nil },
+        IndentBlanklineSpaceChar          = { fg = palette.black.light, bg = nil, sp = nil, link = nil },
+        IndentBlanklineSpaceCharBlankLine = { fg = palette.black.light, bg = nil, sp = nil, link = nil },
+        IndentBlanklineContextChar        = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
+        IndentBlanklineContextStart       = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
+        IndentBlanklineContextSpaceChar   = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
     }
 end

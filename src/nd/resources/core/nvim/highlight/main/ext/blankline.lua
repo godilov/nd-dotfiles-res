@@ -11,5 +11,6 @@ return function(palette, accent)
     nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type value')
 
     return {
+        -- indent-blankline-highlights
     }
 end

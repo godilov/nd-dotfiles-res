@@ -11,5 +11,6 @@ return function(palette, accent)
     nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type value')
 
     return {
+        -- prefix: Telescope
     }
 end
