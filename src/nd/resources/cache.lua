@@ -2,14 +2,14 @@ local type_lib   = require 'nd.lib.core.type'
 local assert_lib = require 'nd.lib.core.assert'
 local cache_lib  = require 'nd.lib.cache'
 
-local awesome    = require 'nd.resources.core.awesome'
-local nvim       = require 'nd.resources.core.nvim'
+local awesome_fn = require 'nd.resources.core.awesome'
+local nvim_fn    = require 'nd.resources.core.nvim'
 
 local is_nil     = type_lib.is_nil
 local is_str     = type_lib.is_str
 local is_tab     = type_lib.is_tab
 
-local nd_assert  = assert_lib.get_fn(ND_LIB_IS_DEBUG)
+local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.resources.cache'
 
 local set        = cache_lib.set
@@ -67,7 +67,7 @@ get_awesome = function(config)
 
     local filename = get_filename { 'awesome', palette_n, accent_n }
 
-    return get_theme_cache(awesome, {
+    return get_theme_cache(awesome_fn, {
         theme   = theme_n,
         palette = palette,
         accent  = accent,
@@ -94,7 +94,7 @@ get_nvim = function(config)
 
     local filename = get_filename { 'nvim', palette_n, accent_n, highlight_n }
 
-    return get_theme_cache(nvim, {
+    return get_theme_cache(nvim_fn, {
         theme     = theme_n,
         palette   = palette,
         accent    = accent,
