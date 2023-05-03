@@ -12,33 +12,39 @@ local nd_err     = assert_lib.get_err_fn 'nd.resources.core.nvim'
 local format     = string.format
 
 
-local get_theme_elem = nil
+local get_theme = nil
 
 
-get_theme_elem = function(scope, val, ...)
-    if is_str(val) then
-        return require(format('%s.%s', scope, val))(...)
-    elseif is_tab(val) then
-        return val
-    elseif is_fn(val) then
-        return val(...)
+get_theme = function(scope, cfg, ...)
+    if is_str(cfg) then
+        return require(format('%s.%s', scope, cfg))(...)
+    elseif is_tab(cfg) then
+        return cfg
+    elseif is_fn(cfg) then
+        return cfg(...)
     else
-        nd_assert(false, nd_err, 'get_theme_elem(): val must be of type string, table or function')
+        nd_assert(false, nd_err, 'get_theme(): val must be of type string, table or function')
     end
 end
 
-return function(palette, accent, highlight)
-    nd_assert(is_val(palette), nd_err, 'fn(): palette must be of type value')
-    nd_assert(is_val(accent), nd_err, 'fn(): accent must be of type value')
-    nd_assert(is_val(highlight), nd_err, 'fn(): highlight must be of type value')
+return function(config)
+    nd_assert(is_tab(config), nd_err, 'fn(): config must be of type table')
 
-    local palette_elem   = get_theme_elem('nd.resources.core.shared.palette', palette)
-    local accent_elem    = get_theme_elem('nd.resources.core.nvim.accent', accent, palette_elem)
-    local highlight_elem = get_theme_elem('nd.resources.core.nvim.highlight', highlight, palette_elem, accent_elem)
+    local palette_cfg   = config.palette or config.theme
+    local accent_cfg    = config.accent or config.theme
+    local highlight_cfg = config.highlight or config.theme
+
+    nd_assert(is_val(palette_cfg), nd_err, 'fn(): palette must be of type value')
+    nd_assert(is_val(accent_cfg), nd_err, 'fn(): accent must be of type value')
+    nd_assert(is_val(highlight_cfg), nd_err, 'fn(): highlight must be of type value')
+
+    local palette   = get_theme('nd.resources.core.shared.palette', palette_cfg)
+    local accent    = get_theme('nd.resources.core.nvim.accent', accent_cfg, palette)
+    local highlight = get_theme('nd.resources.core.nvim.highlight', highlight_cfg, palette, accent)
 
     return {
-        palette   = palette_elem,
-        accent    = accent_elem,
-        highlight = highlight_elem,
+        palette   = palette,
+        accent    = accent,
+        highlight = highlight,
     }
 end
