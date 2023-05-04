@@ -26,6 +26,15 @@ end
 
 get_bench_cases = function()
     return {
+        {
+            name = 'nvim.fn()',
+            opts = opts,
+            args = {
+                theme = 'main',
+            },
+            fn = nvim_fn,
+            n = 1000,
+        },
     }
 end
 
@@ -33,16 +42,17 @@ get_test_cases = function()
     return {
         {
             name = 'nvim.fn()',
+            opts = opts,
             args = {
                 theme = 'main',
             },
             res = {},
             fn = nvim_fn,
-            opts = opts,
             is_ok = is_ok,
         },
         {
             name = 'nvim.fn()',
+            opts = opts,
             args = {
                 palette   = 'main',
                 accent    = 'main',
@@ -50,7 +60,6 @@ get_test_cases = function()
             },
             res = {},
             fn = nvim_fn,
-            opts = opts,
             is_ok = is_ok,
         },
     }
