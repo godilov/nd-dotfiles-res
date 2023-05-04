@@ -6,7 +6,7 @@ local is_tab     = type_lib.is_tab
 local is_fn      = type_lib.is_fn
 
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
-local nd_err     = assert_lib.get_err_fn 'nd.resources.core.shared.theme'
+local nd_err     = assert_lib.get_err_fn 'nd.resources.core.color.shared.theme'
 
 local format     = string.format
 

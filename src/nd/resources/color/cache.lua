@@ -2,15 +2,15 @@ local type_lib   = require 'nd.lib.core.type'
 local assert_lib = require 'nd.lib.core.assert'
 local cache_lib  = require 'nd.lib.cache'
 
-local awesome_fn = require 'nd.resources.core.awesome'
-local nvim_fn    = require 'nd.resources.core.nvim'
+local awesome_fn = require 'nd.resources.core.color.awesome'
+local nvim_fn    = require 'nd.resources.core.color.nvim'
 
 local is_nil     = type_lib.is_nil
 local is_str     = type_lib.is_str
 local is_tab     = type_lib.is_tab
 
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
-local nd_err     = assert_lib.get_err_fn 'nd.resources.cache'
+local nd_err     = assert_lib.get_err_fn 'nd.resources.color.cache'
 
 local set        = cache_lib.set
 local get        = cache_lib.get

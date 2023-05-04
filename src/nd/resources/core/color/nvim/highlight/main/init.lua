@@ -7,18 +7,18 @@ local merge      = tab_lib.merge
 local is_tab     = type_lib.is_tab
 
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
-local nd_err     = assert_lib.get_err_fn 'nd.resources.core.nvim.highlight.main'
+local nd_err     = assert_lib.get_err_fn 'nd.resources.core.color.nvim.highlight.main'
 
 
-local editor_fn     = require 'nd.resources.core.nvim.highlight.main.editor'
-local syntax_fn     = require 'nd.resources.core.nvim.highlight.main.syntax'
+local editor_fn     = require 'nd.resources.core.color.nvim.highlight.main.editor'
+local syntax_fn     = require 'nd.resources.core.color.nvim.highlight.main.syntax'
 
-local packer_fn     = require 'nd.resources.core.nvim.highlight.main.ext.packer'
-local blankline_fn  = require 'nd.resources.core.nvim.highlight.main.ext.blankline'
-local treesitter_fn = require 'nd.resources.core.nvim.highlight.main.ext.treesitter'
-local telescope_fn  = require 'nd.resources.core.nvim.highlight.main.ext.telescope'
-local tree_fn       = require 'nd.resources.core.nvim.highlight.main.ext.tree'
-local cmp_fn        = require 'nd.resources.core.nvim.highlight.main.ext.cmp'
+local packer_fn     = require 'nd.resources.core.color.nvim.highlight.main.ext.packer'
+local blankline_fn  = require 'nd.resources.core.color.nvim.highlight.main.ext.blankline'
+local treesitter_fn = require 'nd.resources.core.color.nvim.highlight.main.ext.treesitter'
+local telescope_fn  = require 'nd.resources.core.color.nvim.highlight.main.ext.telescope'
+local tree_fn       = require 'nd.resources.core.color.nvim.highlight.main.ext.tree'
+local cmp_fn        = require 'nd.resources.core.color.nvim.highlight.main.ext.cmp'
 
 return function(palette, accent)
     nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type value')
