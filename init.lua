@@ -1,10 +1,7 @@
 local format  = string.format
 local gsub    = string.gsub
 
-local path    = gsub(... or '', '%S+', {
-    ['%.init'] = '',
-    ['%.']     = '/',
-})
+local path    = gsub(gsub(... or '', '%.init', ''), '%.', '/')
 
 local is_init = false
 
@@ -31,7 +28,7 @@ init = function(root, is_debug)
 
     ND_RESOURCES_IS_DEBUG = ND_RESOURCES_IS_DEBUG or is_debug
 
-    require 'ext.nd.lib'.init(root, is_debug)
+    require 'ext.nd.lib.init'.init(root, is_debug)
 
     is_init = true
 end
@@ -39,7 +36,10 @@ end
 run = function()
     init('.', true)
 
-    require 'nd.lib.test' {}
+    require 'nd.lib.test' {
+        require 'test.awesome',
+        require 'test.nvim',
+    }
 end
 
 return {
