@@ -33,7 +33,6 @@ get_bench_cases = function()
                 theme = 'main',
             },
             fn = nvim_fn,
-            n = 1000,
         },
     }
 end
