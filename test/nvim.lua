@@ -30,7 +30,7 @@ get_bench_cases = function()
             name = 'nvim.fn()',
             opts = opts,
             args = {
-                theme = 'main',
+                scheme = 'main',
             },
             fn = nvim_fn,
         },
@@ -43,7 +43,7 @@ get_test_cases = function()
             name = 'nvim.fn()',
             opts = opts,
             args = {
-                theme = 'main',
+                scheme = 'main',
             },
             res = {},
             fn = nvim_fn,

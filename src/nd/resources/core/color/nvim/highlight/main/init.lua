@@ -1,14 +1,13 @@
-local tab_lib    = require 'nd.lib.core.tab'
-local type_lib   = require 'nd.lib.core.type'
-local assert_lib = require 'nd.lib.core.assert'
+local tab_lib       = require 'nd.lib.core.tab'
+local type_lib      = require 'nd.lib.core.type'
+local assert_lib    = require 'nd.lib.core.assert'
 
-local merge      = tab_lib.merge
+local merge         = tab_lib.merge
 
-local is_tab     = type_lib.is_tab
+local is_tab        = type_lib.is_tab
 
-local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
-local nd_err     = assert_lib.get_err_fn 'nd.resources.core.color.nvim.highlight.main'
-
+local nd_assert     = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
+local nd_err        = assert_lib.get_err_fn 'nd.resources.core.color.nvim.highlight.main'
 
 local editor_fn     = require 'nd.resources.core.color.nvim.highlight.main.editor'
 local syntax_fn     = require 'nd.resources.core.color.nvim.highlight.main.syntax'
