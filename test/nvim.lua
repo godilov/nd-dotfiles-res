@@ -1,10 +1,9 @@
-local type_lib      = require 'nd.lib.core.type'
+local type_lib        = require 'nd.lib.core.type'
 
-local nvim_color_fn = require 'nd.resources.core.color.nvim'
-local nvim_key_fn   = require 'nd.resources.core.key.nvim'
+local nvim_color_fn   = require 'nd.resources.core.color.nvim'
+local nvim_key_fn     = require 'nd.resources.core.key.nvim'
 
-local is_tab        = type_lib.is_tab
-
+local is_tab          = type_lib.is_tab
 
 local is_color_ok     = nil
 local is_key_ok       = nil
