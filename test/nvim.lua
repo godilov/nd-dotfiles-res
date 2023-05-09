@@ -1,11 +1,13 @@
-local type_lib = require 'nd.lib.core.type'
+local type_lib      = require 'nd.lib.core.type'
 
-local nvim_fn  = require 'nd.resources.core.color.nvim'
+local nvim_color_fn = require 'nd.resources.core.color.nvim'
+local nvim_key_fn   = require 'nd.resources.core.key.nvim'
 
-local is_tab   = type_lib.is_tab
+local is_tab        = type_lib.is_tab
 
 
-local is_ok           = nil
+local is_color_ok     = nil
+local is_key_ok       = nil
 
 local get_bench_cases = nil
 local get_test_cases  = nil
@@ -18,21 +20,39 @@ local opts = {
 }
 
 
-is_ok = function(x, _)
+is_color_ok = function(x, _)
     return is_tab(x.palette) and
         is_tab(x.accent) and
         is_tab(x.highlight)
 end
 
+is_key_ok = function(x, _)
+    return is_tab(x.scheme)
+end
+
 get_bench_cases = function()
     return {
         {
-            name = 'nvim.fn()',
+            name = 'color.nvim.fn()',
             opts = opts,
             args = {
                 scheme = 'main',
             },
-            fn = nvim_fn,
+            fn = nvim_color_fn,
+        },
+        {
+            name = 'key.nvim.fn()',
+            opts = opts,
+            args = {
+                scheme = 'main',
+                leader = {
+                    files    = ';',
+                    lsp_goto = 'g',
+                    lsp      = ' ',
+                },
+                opts = {},
+            },
+            fn = nvim_key_fn,
         },
     }
 end
@@ -40,17 +60,17 @@ end
 get_test_cases = function()
     return {
         {
-            name = 'nvim.fn()',
+            name = 'color.nvim.fn()',
             opts = opts,
             args = {
                 scheme = 'main',
             },
             res = {},
-            fn = nvim_fn,
-            is_ok = is_ok,
+            fn = nvim_color_fn,
+            is_ok = is_color_ok,
         },
         {
-            name = 'nvim.fn()',
+            name = 'color.nvim.fn()',
             opts = opts,
             args = {
                 palette   = 'main',
@@ -58,8 +78,24 @@ get_test_cases = function()
                 highlight = 'main',
             },
             res = {},
-            fn = nvim_fn,
-            is_ok = is_ok,
+            fn = nvim_color_fn,
+            is_ok = is_color_ok,
+        },
+        {
+            name = 'key.nvim.fn()',
+            opts = opts,
+            args = {
+                scheme = 'main',
+                leader = {
+                    files    = ';',
+                    lsp_goto = 'g',
+                    lsp      = ' ',
+                },
+                opts = {},
+            },
+            res = {},
+            fn = nvim_key_fn,
+            is_ok = is_key_ok,
         },
     }
 end
