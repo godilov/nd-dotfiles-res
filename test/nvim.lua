@@ -18,15 +18,15 @@ local opts = {
     offset = '',
 }
 
-
 is_color_ok = function(x, _)
-    return is_tab(x.palette) and
+    return x and
+        is_tab(x.palette) and
         is_tab(x.accent) and
         is_tab(x.highlight)
 end
 
 is_key_ok = function(x, _)
-    return is_tab(x.scheme)
+    return x and is_tab(x.scheme)
 end
 
 get_bench_cases = function()
