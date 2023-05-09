@@ -20,8 +20,8 @@ local tree_fn       = require 'nd.resources.core.color.nvim.highlight.main.ext.t
 local cmp_fn        = require 'nd.resources.core.color.nvim.highlight.main.ext.cmp'
 
 return function(palette, accent)
-    nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type value')
-    nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type value')
+    nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type table')
+    nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type table')
 
     return merge {
         editor_fn(palette, accent),

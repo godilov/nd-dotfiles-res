@@ -7,8 +7,8 @@ local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.resources.core.color.nvim.highlight.main.ext.tree'
 
 return function(palette, accent)
-    nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type value')
-    nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type value')
+    nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type table')
+    nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type table')
 
     return {
         -- nvim-tree-highlight
