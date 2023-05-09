@@ -1,9 +1,12 @@
+local str_lib    = require 'nd.lib.core.str'
 local type_lib   = require 'nd.lib.core.type'
 local assert_lib = require 'nd.lib.core.assert'
 local cache_lib  = require 'nd.lib.cache'
 
 local awesome_fn = require 'nd.resources.core.color.awesome'
 local nvim_fn    = require 'nd.resources.core.color.nvim'
+
+local concat2s   = str_lib.concat2s
 
 local is_str     = type_lib.is_str
 local is_tab     = type_lib.is_tab
@@ -13,8 +16,6 @@ local nd_err     = assert_lib.get_err_fn 'nd.resources.color.cache'
 
 local set        = cache_lib.set
 local get        = cache_lib.get
-
-local format     = string.format
 
 local concat     = table.concat
 
@@ -27,7 +28,7 @@ local get_nvim         = nil
 
 
 get_filename = function(strs)
-    return format('%s%s', concat(strs, '-'), '.lua')
+    return concat2s(concat(strs, '-'), '.lua')
 end
 
 get_scheme = function(fn, config, filename)
