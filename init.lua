@@ -10,7 +10,7 @@ local init = nil
 local run  = nil
 
 
-init = function(root, is_debug)
+init = function(root, is_debug, is_dep)
     if is_init then
         return
     end
@@ -28,7 +28,9 @@ init = function(root, is_debug)
 
     ND_RESOURCES_IS_DEBUG = ND_RESOURCES_IS_DEBUG or is_debug
 
-    require 'ext.nd.lib.init'.init(root, is_debug)
+    if not is_dep then
+        require 'ext.nd.lib.init'.init(root, is_debug, true)
+    end
 
     is_init = true
 end
