@@ -1,6 +1,9 @@
+local str_lib    = require 'nd.lib.core.str'
 local tab_lib    = require 'nd.lib.core.tab'
 local type_lib   = require 'nd.lib.core.type'
 local assert_lib = require 'nd.lib.core.assert'
+
+local concat2s   = str_lib.concat2s
 
 local merge      = tab_lib.merge
 
@@ -8,6 +11,8 @@ local is_tab     = type_lib.is_tab
 
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.resources.core.key.awesome.main.key.root'
+
+local date       = os.date
 
 return function(mod)
     nd_assert(is_tab(mod), nd_err, 'fn(): mod must be of type table')
@@ -18,10 +23,12 @@ return function(mod)
         local awful   = api.awful
         local menubar = api.menubar
         local naughty = api.naughty
+        local client  = api.client
 
         nd_assert(awful, nd_err, 'fn(): api.awful must be of type value')
         nd_assert(menubar, nd_err, 'fn(): api.menubar must be of type value')
         nd_assert(naughty, nd_err, 'fn(): api.naughty must be of type value')
+        nd_assert(client, nd_err, 'fn(): api.client must be of type value')
 
         local key = awful.key
 
@@ -30,12 +37,12 @@ return function(mod)
             key({ mod.super }, 'F12', awesome.quit, {}),
 
             key({}, 'Print', function()
-                local path = '~/Pictures/Screenshots/' .. os.date '%Y-%m-%d_%H-%M-%S.png'
+                local path = concat2s('~/Pictures/Screenshots/', date '%Y-%m-%d_%H-%M-%S.png')
 
-                awful.spawn.with_shell('shotgun -s ' .. path)
+                awful.spawn.with_shell(concat2s('shotgun -s ', path))
 
                 naughty.notify {
-                    text = 'Screenshot: ' .. path,
+                    text = concat2s('Screenshot: ', path),
                 }
             end, {}),
 
@@ -73,7 +80,11 @@ return function(mod)
             -- key({ mod.super, mod.alt }, 'j', {}, {}), -- Defined by client
             -- key({ mod.super, mod.alt }, 'k', {}, {}), -- Defined by client
 
-            key({ mod.super, mod.crtl }, 'q', function() client.focus:kill() end),
+            key({ mod.super, mod.crtl }, 'q', function()
+                if client.focus then
+                    client.focus:kill()
+                end
+            end),
             key({ mod.super }, mod.enter, function() awful.spawn 'alacritty' end, {}),
             key({ mod.super }, mod.space, function() menubar.show() end, {}),
         }
