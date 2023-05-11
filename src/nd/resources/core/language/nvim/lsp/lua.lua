@@ -1,16 +1,30 @@
 local fn_lib   = require 'nd.lib.core.fn'
 local str_lib  = require 'nd.lib.core.str'
+local tab_lib  = require 'nd.lib.core.tab'
 
 local ivals    = fn_lib.ivals
 local reduce   = fn_lib.reduce
 
 local concat3s = str_lib.concat3s
 
-return function(config)
-    local cfg  = config or {}
+local concat   = tab_lib.concat
 
-    local root = cfg.root or ''
-    local libs = cfg.libs or {}
+return function(config)
+    local cfg         = config or {}
+
+    local root        = cfg.root or ''
+    local libs_cfg    = cfg.libs or {}
+    local libs_predef = {
+        '/usr/share/nvim/runtime/lua',
+        '/usr/share/nvim/runtime/lua/lsp',
+        '/usr/share/awesome/lib',
+    }
+
+
+    local libs = concat {
+        libs_cfg,
+        libs_predef,
+    }
 
     return {
         Lua = {
