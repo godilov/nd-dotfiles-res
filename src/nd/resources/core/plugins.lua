@@ -1,0 +1,25 @@
+return function()
+    return {
+        { 'wbthomason',      'packer.nvim' },
+        { 'nvim-lua',        'plenary.nvim' },
+        { 'kyazdani42',      'nvim-web-devicons' },
+        { 'startup-nvim',    'startup.nvim' },
+        { 'akinsho',         'bufferline.nvim' },
+        { 'nvim-lualine',    'lualine.nvim' },
+        { 'nvim-treesitter', 'nvim-treesitter' },
+        { 'nvim-treesitter', 'playground' },
+        { 'lukas-reineke',   'indent-blankline.nvim' },
+        { 'norcalli',        'nvim-colorizer.lua' },
+        { 'kyazdani42',      'nvim-tree.lua' },
+        { 'nvim-telescope',  'telescope.nvim' },
+        { 'mfussenegger',    'nvim-dap' },
+        { 'williamboman',    'mason.nvim' },
+        { 'williamboman',    'mason-lspconfig.nvim' },
+        { 'neovim',          'nvim-lspconfig' },
+        { 'hrsh7th',         'nvim-cmp' },
+        { 'hrsh7th',         'cmp-path' },
+        { 'hrsh7th',         'cmp-nvim-lsp' },
+        { 'saadparwaiz1',    'cmp_luasnip' },
+        { 'L3MON4D3',        'LuaSnip' },
+    }
+end
