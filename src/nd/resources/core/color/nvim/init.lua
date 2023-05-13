@@ -25,7 +25,7 @@ return function(config)
     local accent    = load_fn('nd.resources.core.color.nvim.accent', accent_cfg, { palette = palette })
     local highlight = load_fn('nd.resources.core.color.nvim.highlight', highlight_cfg, {
         palette = palette,
-        accent = accent,
+        accent  = accent,
     })
 
     return {

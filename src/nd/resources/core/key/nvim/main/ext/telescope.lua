@@ -18,28 +18,28 @@ return function(config)
     nd_assert(is_tab(opts) or not opts, nd_err, 'fn(): opts must be of type table or nil')
 
     return function()
-        local telescope = api.telescope
+        local actions = api.telescope.actions
 
         return {
             i = {
-                ['<Up>']       = telescope.move_selection_previous,
-                ['<Down>']     = telescope.move_selection_next,
-                ['<Left>']     = telescope.toggle_selection + telescope.move_selection_worse,
-                ['<Right>']    = telescope.toggle_selection + telescope.move_selection_better,
+                ['<Up>']       = actions.move_selection_previous,
+                ['<Down>']     = actions.move_selection_next,
+                ['<Left>']     = actions.toggle_selection + actions.move_selection_worse,
+                ['<Right>']    = actions.toggle_selection + actions.move_selection_better,
 
-                ['<Tab>']      = telescope.move_selection_previous,
-                ['<S-Tab>']    = telescope.move_selection_next,
+                ['<Tab>']      = actions.move_selection_previous,
+                ['<S-Tab>']    = actions.move_selection_next,
 
-                ['<CR>']       = telescope.select_default,
-                ['<C-x>']      = telescope.select_horizontal,
-                ['<C-v>']      = telescope.select_vertical,
-                ['<C-t>']      = telescope.select_tab,
+                ['<CR>']       = actions.select_default,
+                ['<C-x>']      = actions.select_horizontal,
+                ['<C-v>']      = actions.select_vertical,
+                ['<C-t>']      = actions.select_tab,
 
-                ['<C-u>']      = telescope.preview_scrolling_up,
-                ['<C-d>']      = telescope.preview_scrolling_down,
+                ['<C-u>']      = actions.preview_scrolling_up,
+                ['<C-d>']      = actions.preview_scrolling_down,
 
-                ['<C-q>']      = telescope.send_to_qflist + telescope.open_qflist,
-                ['<M-q>']      = telescope.send_selected_to_qflist + telescope.open_qflist,
+                ['<C-q>']      = actions.send_to_qflist + actions.open_qflist,
+                ['<M-q>']      = actions.send_selected_to_qflist + actions.open_qflist,
 
                 ['<C-n>']      = false,
                 ['<C-p>']      = false,
@@ -55,34 +55,34 @@ return function(config)
                 ['<C-w>']      = false,
             },
             n = {
-                ['<Up>']       = telescope.move_selection_previous,
-                ['<Down>']     = telescope.move_selection_next,
-                ['<Left>']     = telescope.toggle_selection + telescope.move_selection_worse,
-                ['<Right>']    = telescope.toggle_selection + telescope.move_selection_better,
+                ['<Up>']       = actions.move_selection_previous,
+                ['<Down>']     = actions.move_selection_next,
+                ['<Left>']     = actions.toggle_selection + actions.move_selection_worse,
+                ['<Right>']    = actions.toggle_selection + actions.move_selection_better,
 
-                ['<Tab>']      = telescope.move_selection_previous,
-                ['<S-Tab>']    = telescope.move_selection_next,
-                ['k']          = telescope.move_selection_previous,
-                ['j']          = telescope.move_selection_next,
+                ['<Tab>']      = actions.move_selection_previous,
+                ['<S-Tab>']    = actions.move_selection_next,
+                ['k']          = actions.move_selection_previous,
+                ['j']          = actions.move_selection_next,
 
-                ['<CR>']       = telescope.select_default,
-                ['<C-x>']      = telescope.select_horizontal,
-                ['<C-v>']      = telescope.select_vertical,
-                ['<C-t>']      = telescope.select_tab,
+                ['<CR>']       = actions.select_default,
+                ['<C-x>']      = actions.select_horizontal,
+                ['<C-v>']      = actions.select_vertical,
+                ['<C-t>']      = actions.select_tab,
 
-                ['<C-u>']      = telescope.preview_scrolling_up,
-                ['<C-d>']      = telescope.preview_scrolling_down,
+                ['<C-u>']      = actions.preview_scrolling_up,
+                ['<C-d>']      = actions.preview_scrolling_down,
 
-                ['q']          = telescope.close,
-                ['<Esc>']      = telescope.close,
+                ['q']          = actions.close,
+                ['<Esc>']      = actions.close,
 
-                ['<C-q>']      = telescope.send_to_qflist + telescope.open_qflist,
-                ['<M-q>']      = telescope.send_selected_to_qflist + telescope.open_qflist,
+                ['<C-q>']      = actions.send_to_qflist + actions.open_qflist,
+                ['<M-q>']      = actions.send_selected_to_qflist + actions.open_qflist,
 
-                ['gg']         = telescope.move_to_top,
-                ['G']          = telescope.move_to_bottom,
+                ['gg']         = actions.move_to_top,
+                ['G']          = actions.move_to_bottom,
 
-                ['?']          = telescope.which_key,
+                ['?']          = actions.which_key,
 
                 ['<PageUp>']   = false,
                 ['<PageDown>'] = false,
