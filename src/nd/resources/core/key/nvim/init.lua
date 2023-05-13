@@ -15,9 +15,5 @@ return function(config)
     nd_assert(is_tab(config.leader), nd_err, 'fn(): leader must be of type table')
     nd_assert(is_tab(config.opts) or not config.opts, nd_err, 'fn(): opts must be of type table or nil')
 
-    local scheme = load_fn('nd.resources.core.key.nvim', config.scheme, config.leader, config.opts)
-
-    return {
-        scheme = scheme,
-    }
+    return load_fn('nd.resources.core.key.nvim', config.scheme, config)
 end

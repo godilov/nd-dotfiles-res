@@ -1,4 +1,4 @@
-return function(palette)
+return function(config)
     return {
     }
 end

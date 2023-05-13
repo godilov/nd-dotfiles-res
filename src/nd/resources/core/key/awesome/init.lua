@@ -14,9 +14,5 @@ return function(config)
 
     nd_assert(is_tab(config.mod), nd_err, 'fn(): mod must be of type table')
 
-    local scheme = load_fn('nd.resources.core.key.awesome', config.scheme, config.mod)
-
-    return {
-        scheme = scheme,
-    }
+    return load_fn('nd.resources.core.key.awesome', config.scheme, config)
 end

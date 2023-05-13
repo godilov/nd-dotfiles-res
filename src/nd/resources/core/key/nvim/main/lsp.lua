@@ -10,7 +10,14 @@ local is_tab     = type_lib.is_tab
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.resources.core.key.nvim.main.lsp'
 
-return function(leader, opts)
+return function(config)
+    local api    = config.api
+    local leader = config.leader
+    local opts   = config.opts
+
+    nd_assert(is_tab(api), nd_err, 'fn(): api must be of type table')
+    nd_assert(api.nvim, nd_err, 'fn(): api.nvim must be of type value')
+
     nd_assert(is_tab(leader), nd_err, 'fn(): leader must be of type table')
     nd_assert(is_str(leader.lsp), nd_err, 'fn(): leader.lsp must be of type string')
     nd_assert(is_str(leader.lsp_goto), nd_err, 'fn(): leader.lsp_goto must be of type string')
@@ -19,10 +26,7 @@ return function(leader, opts)
     local lsp      = leader.lsp
     local lsp_goto = leader.lsp_goto
 
-    return function(api)
-        nd_assert(is_tab(api), nd_err, 'fn().fn(): api must be of type table')
-        nd_assert(api.nvim, nd_err, 'fn().fn(): api.nvim must be of type value')
-
+    return function()
         local diag = api.nvim.diagnostic
 
         return {

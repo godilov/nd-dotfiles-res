@@ -15,17 +15,18 @@ local telescope_fn  = require 'nd.resources.core.key.nvim.main.ext.telescope'
 local tree_fn       = require 'nd.resources.core.key.nvim.main.ext.tree'
 local cmp_fn        = require 'nd.resources.core.key.nvim.main.ext.cmp'
 
-return function(leader, opts)
-    nd_assert(is_tab(leader), nd_err, 'fn(): leader must be of type table')
-    nd_assert(is_tab(opts) or not opts, nd_err, 'fn(): opts must be of type table or nil')
+return function(config)
+    nd_assert(is_tab(config.api), nd_err, 'fn(): api must be of type table')
+    nd_assert(is_tab(config.leader), nd_err, 'fn(): leader must be of type table')
+    nd_assert(is_tab(config.opts) or not config.opts, nd_err, 'fn(): opts must be of type table or nil')
 
     return {
-        lsp        = lsp_fn(leader, opts),
-        lsp_buf    = lsp_buf_fn(leader, opts),
-        editor     = editor_fn(leader, opts),
-        treesitter = treesitter_fn(leader, opts),
-        telescope  = telescope_fn(leader, opts),
-        tree       = tree_fn(leader, opts),
-        cmp        = cmp_fn(leader, opts),
+        lsp_fn        = lsp_fn(config),
+        lsp_buf_fn    = lsp_buf_fn(config),
+        editor_fn     = editor_fn(config),
+        treesitter_fn = treesitter_fn(config),
+        telescope_fn  = telescope_fn(config),
+        tree_fn       = tree_fn(config),
+        cmp_fn        = cmp_fn(config),
     }
 end

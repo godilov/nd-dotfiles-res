@@ -19,18 +19,18 @@ local telescope_fn  = require 'nd.resources.core.color.nvim.highlight.main.ext.t
 local tree_fn       = require 'nd.resources.core.color.nvim.highlight.main.ext.tree'
 local cmp_fn        = require 'nd.resources.core.color.nvim.highlight.main.ext.cmp'
 
-return function(palette, accent)
-    nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type table')
-    nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type table')
+return function(config)
+    nd_assert(is_tab(config.palette), nd_err, 'fn(): palette must be of type table')
+    nd_assert(is_tab(config.accent), nd_err, 'fn(): accent must be of type table')
 
     return merge {
-        editor_fn(palette, accent),
-        syntax_fn(palette, accent),
-        packer_fn(palette, accent),
-        blankline_fn(palette, accent),
-        treesitter_fn(palette, accent),
-        telescope_fn(palette, accent),
-        tree_fn(palette, accent),
-        cmp_fn(palette, accent),
+        editor_fn(config),
+        syntax_fn(config),
+        packer_fn(config),
+        blankline_fn(config),
+        treesitter_fn(config),
+        telescope_fn(config),
+        tree_fn(config),
+        cmp_fn(config),
     }
 end

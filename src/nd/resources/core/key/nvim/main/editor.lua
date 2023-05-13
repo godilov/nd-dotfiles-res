@@ -10,14 +10,17 @@ local is_tab     = type_lib.is_tab
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.resources.core.key.nvim.main.editor'
 
-return function(leader, opts)
+return function(config)
+    local leader = config.leader
+    local opts   = config.opts
+
     nd_assert(is_tab(leader), nd_err, 'fn(): leader must be of type table')
     nd_assert(is_str(leader.files), nd_err, 'fn(): leader.files must be of type string')
     nd_assert(is_tab(opts) or not opts, nd_err, 'fn(): opts must be of type table or nil')
 
     local files = leader.files
 
-    return function(_)
+    return function()
         return {
             { '',  '<up>',               '<nop>',                         opts },
             { '',  '<down>',             '<nop>',                         opts },

@@ -1,30 +1,8 @@
-local fn_lib   = require 'nd.lib.core.fn'
-local str_lib  = require 'nd.lib.core.str'
-local tab_lib  = require 'nd.lib.core.tab'
-
-local ivals    = fn_lib.ivals
-local reduce   = fn_lib.reduce
-
-local concat3s = str_lib.concat3s
-
-local concat   = tab_lib.concat
-
 return function(config)
-    local cfg         = config or {}
+    local cfg     = config or {}
 
-    local root        = cfg.root or ''
-    local libs_cfg    = cfg.libs or {}
-    local libs_predef = {
-        '/usr/share/nvim/runtime/lua',
-        '/usr/share/nvim/runtime/lua/lsp',
-        '/usr/share/awesome/lib',
-    }
-
-
-    local libs = concat {
-        libs_cfg,
-        libs_predef,
-    }
+    local libs    = cfg.libs or {}
+    local globals = cfg.globals or {}
 
     return {
         Lua = {
@@ -66,22 +44,12 @@ return function(config)
                     align_array_table = 'true',
                 },
             },
-            diagnostics = {
-                globals = {
-                    'vim',
-                    'awesome',
-                    'screen',
-                    'client',
-                    'root',
-                },
-            },
             workspace = {
-                library = reduce(function(t, lib)
-                    t[#t + 1] = concat3s(root, '/packer/start/', concat3s(lib[1], '/', lib[2]))
-
-                    return t
-                end, {}, ivals(libs)),
+                library = libs,
                 checkThirdParty = false,
+            },
+            diagnostics = {
+                globals = globals,
             },
         },
     }

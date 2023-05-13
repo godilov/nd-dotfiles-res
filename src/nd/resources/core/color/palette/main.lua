@@ -1,4 +1,4 @@
-return function()
+return function(_)
     return {
         fg = {
             normal = '#f2f2f2',

@@ -6,14 +6,18 @@ local is_tab     = type_lib.is_tab
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.resources.core.key.nvim.main.ext.telescope'
 
-return function(leader, opts)
+return function(config)
+    local api    = config.api
+    local leader = config.leader
+    local opts   = config.opts
+
+    nd_assert(is_tab(api), nd_err, 'fn(): api must be of type table')
+    nd_assert(api.telescope, nd_err, 'fn(): api.telescope must be of type value')
+
     nd_assert(is_tab(leader), nd_err, 'fn(): leader must be of type table')
     nd_assert(is_tab(opts) or not opts, nd_err, 'fn(): opts must be of type table or nil')
 
-    return function(api)
-        nd_assert(is_tab(api), nd_err, 'fn().fn(): api must be of type table')
-        nd_assert(api.telescope, nd_err, 'fn().fn(): api.telescope must be of type value')
-
+    return function()
         local telescope = api.telescope
 
         return {

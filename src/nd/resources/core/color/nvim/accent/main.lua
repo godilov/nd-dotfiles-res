@@ -6,7 +6,9 @@ local is_tab     = type_lib.is_tab
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.resources.core.color.nvim.accent.main'
 
-return function(palette)
+return function(config)
+    local palette = config.palette
+
     nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type table')
 
     local diag = {
