@@ -18,7 +18,7 @@ return function(config)
     nd_assert(is_tab(opts) or not opts, nd_err, 'fn(): opts must be of type table or nil')
 
     return function()
-        local actions = api.telescope.actions
+        local actions = api.actions
 
         return {
             i = {
