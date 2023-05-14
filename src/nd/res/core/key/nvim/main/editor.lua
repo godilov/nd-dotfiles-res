@@ -33,6 +33,8 @@ return function(config)
             { 'n', concat2s(files, 'g'), '<CMD>Telescope git_files<CR>',  opts },
             { 'n', concat2s(files, ';'), '<CMD>Telescope live_grep<CR>',  opts },
             { 'n', concat2s(files, '`'), '<CMD>Telescope help_tags<CR>',  opts },
+            { 'n', '<F5>',               '<CMD>SessionSave<CR>',          opts },
+            { 'n', '<F8>',               '<CMD>SessionLoad<CR>',          opts },
             { 'n', '<C-h>',              '<C-w>h',                        opts },
             { 'n', '<C-j>',              '<C-w>j',                        opts },
             { 'n', '<C-k>',              '<C-w>k',                        opts },
