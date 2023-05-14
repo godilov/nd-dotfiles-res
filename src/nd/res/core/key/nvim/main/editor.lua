@@ -33,8 +33,8 @@ return function(config)
             { 'n', concat2s(files, 'g'), '<CMD>Telescope git_files<CR>',  opts },
             { 'n', concat2s(files, ';'), '<CMD>Telescope live_grep<CR>',  opts },
             { 'n', concat2s(files, '`'), '<CMD>Telescope help_tags<CR>',  opts },
-            { 'n', '<F5>',               '<CMD>SessionsSave<CR>',          opts },
-            { 'n', '<F8>',               '<CMD>SessionsLoad<CR>',          opts },
+            { 'n', '<F5>',               '<CMD>SessionsSave<CR>',         opts },
+            { 'n', '<F8>',               '<CMD>SessionsLoad<CR>',         opts },
             { 'n', '<C-h>',              '<C-w>h',                        opts },
             { 'n', '<C-j>',              '<C-w>j',                        opts },
             { 'n', '<C-k>',              '<C-w>k',                        opts },
@@ -51,6 +51,8 @@ return function(config)
             { 'n', '<M-j>',              '<CMD>:tabclose<CR>',            opts },
             { 'n', '<M-k>',              '<CMD>:tabnew<CR>',              opts },
             { 'n', '<M-l>',              '<CMD>:tabnext<CR>',             opts },
+            { 'n', '<C-M-h>',            '<CMD>:-tabmove<CR>',             opts },
+            { 'n', '<C-M-l>',            '<CMD>:+tabmove<CR>',            opts },
         }
     end
 end
