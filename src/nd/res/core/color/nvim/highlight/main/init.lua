@@ -2,7 +2,7 @@ local tab_lib       = require 'nd.lib.core.tab'
 local type_lib      = require 'nd.lib.core.type'
 local assert_lib    = require 'nd.lib.core.assert'
 
-local merge         = tab_lib.merge
+local concat        = tab_lib.concat
 
 local is_tab        = type_lib.is_tab
 
@@ -23,7 +23,7 @@ return function(config)
     nd_assert(is_tab(config.palette), nd_err, 'fn(): palette must be of type table')
     nd_assert(is_tab(config.accent), nd_err, 'fn(): accent must be of type table')
 
-    return merge {
+    return concat {
         editor_fn(config),
         syntax_fn(config),
         packer_fn(config),

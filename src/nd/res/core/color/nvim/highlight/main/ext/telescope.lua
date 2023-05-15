@@ -7,7 +7,7 @@ local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.color.nvim.highlight.main.ext.telescope'
 
 --
--- Group = { fg, bg, sp, gui, link }
+-- Group = { hl, fg, bg, sp, gui, link }
 --
 
 return function(config)

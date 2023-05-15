@@ -7,7 +7,7 @@ local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.color.nvim.highlight.main.ext.cmp'
 
 --
--- Group = { fg, bg, sp, gui, link }
+-- Group = { hl, fg, bg, sp, gui, link }
 --
 
 return function(config)
@@ -17,47 +17,48 @@ return function(config)
     nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type table')
     nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type table')
 
+    local none = 'NONE'
+
     return {
         -- cmp-highlight
         -- prefix: Cmp
 
-        CmpDocumentation       = { palette.red.normal, nil, nil, nil },
-        CmpDocumentationBorder = { palette.red.normal, nil, nil, nil },
+        { 'CmpDocumentation',       palette.red.normal, none, none, none },
+        { 'CmpDocumentationBorder', palette.red.normal, none, none, none },
 
-        -- CmpItemAbbr           = { nil, nil, nil, nil },
-        -- CmpItemAbbrDeprecated = { nil, nil, nil, nil },
-        -- CmpItemAbbrMatch      = { nil, nil, nil, nil },
-        -- CmpItemAbbrMatchFuzzy = { nil, nil, nil, nil },
+        -- { 'CmpItemAbbr',              none,                none, none, none },
+        -- { 'CmpItemAbbrDeprecated',    none,                none, none, none },
+        -- { 'CmpItemAbbrMatch',         none,                none, none, none },
+        -- { 'CmpItemAbbrMatchFuzzy',    none,                none, none, none },
 
-        -- CmpItemKindDefault = { nil, nil, nil, nil },
-        -- CmpItemMenu        = { nil, nil, nil, nil },
+        -- { 'CmpItemKindDefault',       none,                none, none, none },
+        -- { 'CmpItemMenu',              none,                none, none, none },
 
-        -- CmpItemKindKeyword = { nil, nil, nil, nil },
+        -- { 'CmpItemKindKeyword',       none,                none, none, none },
 
-        -- CmpItemKindVariable  = { nil, nil, nil, nil },
-        -- CmpItemKindConstant  = { nil, nil, nil, nil },
-        -- CmpItemKindReference = { nil, nil, nil, nil },
-        -- CmpItemKindValue     = { nil, nil, nil, nil },
+        -- { 'CmpItemKindVariable',      none,                none, none, none },
+        -- { 'CmpItemKindConstant',      none,                none, none, none },
+        -- { 'CmpItemKindReference',     none,                none, none, none },
+        -- { 'CmpItemKindValue',         none,                none, none, none },
 
-        -- CmpItemKindFunction    = { nil, nil, nil, nil },
-        -- CmpItemKindMethod      = { nil, nil, nil, nil },
-        -- CmpItemKindConstructor = { nil, nil, nil, nil },
+        -- { 'CmpItemKindFunction',      none,                none, none, none },
+        -- { 'CmpItemKindMethod',        none,                none, none, none },
+        -- { 'CmpItemKindConstructor',   none,                none, none, none },
+        -- { 'CmpItemKindInterface',     none,                none, none, none },
+        -- { 'CmpItemKindEvent',         none,                none, none, none },
+        -- { 'CmpItemKindEnum',          none,                none, none, none },
+        -- { 'CmpItemKindUnit',          none,                none, none, none },
 
-        -- CmpItemKindInterface = { nil, nil, nil, nil },
-        -- CmpItemKindEvent     = { nil, nil, nil, nil },
-        -- CmpItemKindEnum      = { nil, nil, nil, nil },
-        -- CmpItemKindUnit      = { nil, nil, nil, nil },
+        -- { 'CmpItemKindClass',         none,                none, none, none },
+        -- { 'CmpItemKindStruct',        none,                none, none, none },
 
-        -- CmpItemKindClass  = { nil, nil, nil, nil },
-        -- CmpItemKindStruct = { nil, nil, nil, nil },
+        -- { 'CmpItemKindModule',        none,                none, none, none },
 
-        -- CmpItemKindModule = { nil, nil, nil, nil },
-
-        -- CmpItemKindProperty      = { nil, nil, nil, nil },
-        -- CmpItemKindField         = { nil, nil, nil, nil },
-        -- CmpItemKindTypeParameter = { nil, nil, nil, nil },
-        -- CmpItemKindEnumMember    = { nil, nil, nil, nil },
-        -- CmpItemKindOperator      = { nil, nil, nil, nil },
-        -- CmpItemKindSnippet       = { nil, nil, nil, nil },
+        -- { 'CmpItemKindProperty',      none,                none, none, none },
+        -- { 'CmpItemKindField',         none,                none, none, none },
+        -- { 'CmpItemKindTypeParameter', none,                none, none, none },
+        -- { 'CmpItemKindEnumMember',    none,                none, none, none },
+        -- { 'CmpItemKindOperator',      none,                none, none, none },
+        -- { 'CmpItemKindSnippet',       none,                none, none, none },
     }
 end

@@ -7,7 +7,7 @@ local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.color.nvim.highlight.main.ext.packer'
 
 --
--- Group = { fg, bg, sp, gui, link }
+-- Group = { hl, fg, bg, sp, gui, link }
 --
 
 return function(config)
@@ -17,12 +17,14 @@ return function(config)
     nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type table')
     nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type table')
 
+    local none = 'NONE'
+
     return {
-        IndentBlanklineChar               = { palette.black.light, nil, nil, nil },
-        IndentBlanklineSpaceChar          = { palette.black.light, nil, nil, nil },
-        IndentBlanklineSpaceCharBlankLine = { palette.black.light, nil, nil, nil },
-        IndentBlanklineContextChar        = { palette.yellow.light, nil, nil, nil },
-        IndentBlanklineContextStart       = { palette.yellow.light, nil, nil, nil },
-        IndentBlanklineContextSpaceChar   = { palette.yellow.light, nil, nil, nil },
+        { 'IndentBlanklineChar',               palette.black.light,  none, none, none },
+        { 'IndentBlanklineSpaceChar',          palette.black.light,  none, none, none },
+        { 'IndentBlanklineSpaceCharBlankLine', palette.black.light,  none, none, none },
+        { 'IndentBlanklineContextChar',        palette.yellow.light, none, none, none },
+        { 'IndentBlanklineContextStart',       palette.yellow.light, none, none, none },
+        { 'IndentBlanklineContextSpaceChar',   palette.yellow.light, none, none, none },
     }
 end

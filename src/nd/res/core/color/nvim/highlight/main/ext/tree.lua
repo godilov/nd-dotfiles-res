@@ -7,7 +7,7 @@ local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.color.nvim.highlight.main.ext.tree'
 
 --
--- Group = { fg, bg, sp, gui, link }
+-- Group = { hl, fg, bg, sp, gui, link }
 --
 
 return function(config)
@@ -17,28 +17,30 @@ return function(config)
     nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type table')
     nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type table')
 
+    local none = 'NONE'
+
     return {
         -- nvim-tree-highlight
 
-        -- NvimTreeNormal       = { nil, nil, nil, nil },
-        -- NvimTreeVertSplit    = { nil, nil, nil, nil },
-        -- NvimTreeIndentMarker = { nil, nil, nil, nil },
-
-        -- NvimTreeRootFolder       = { nil, nil, nil, nil },
-        -- NvimTreeFolderName       = { nil, nil, nil, nil },
-        -- NvimTreeFolderIcon       = { nil, nil, nil, nil },
-        -- NvimTreeOpenedFolderName = { nil, nil, nil, nil },
-        -- NvimTreeEmptyFolderName  = { nil, nil, nil, nil },
-        -- NvimTreeSymlink          = { nil, nil, nil, nil },
-        -- NvimTreeSpecialFile      = { nil, nil, nil, nil },
-        -- NvimTreeImageFile        = { nil, nil, nil, nil },
-        -- NvimTreeOpenedFile       = { nil, nil, nil, nil },
-
-        -- NvimTreeGitDeleted = { nil, nil, nil, nil },
-        -- NvimTreeGitDirty   = { nil, nil, nil, nil },
-        -- NvimTreeGitMerge   = { nil, nil, nil, nil },
-        -- NvimTreeGitNew     = { nil, nil, nil, nil },
-        -- NvimTreeGitRenamed = { nil, nil, nil, nil },
-        -- NvimTreeGitStaged  = { nil, nil, nil, nil },
+        { 'NvimTreeNormal',           none, none, none, none },
+        { 'NvimTreeVertSplit',        none, none, none, none },
+        { 'NvimTreeIndentMarker',     none, none, none, none },
+        --
+        { 'NvimTreeRootFolder',       none, none, none, none },
+        { 'NvimTreeFolderName',       none, none, none, none },
+        { 'NvimTreeFolderIcon',       none, none, none, none },
+        { 'NvimTreeOpenedFolderName', none, none, none, none },
+        { 'NvimTreeEmptyFolderName',  none, none, none, none },
+        { 'NvimTreeSymlink',          none, none, none, none },
+        { 'NvimTreeSpecialFile',      none, none, none, none },
+        { 'NvimTreeImageFile',        none, none, none, none },
+        { 'NvimTreeOpenedFile',       none, none, none, none },
+        --
+        { 'NvimTreeGitDeleted',       none, none, none, none },
+        { 'NvimTreeGitDirty',         none, none, none, none },
+        { 'NvimTreeGitMerge',         none, none, none, none },
+        { 'NvimTreeGitNew',           none, none, none, none },
+        { 'NvimTreeGitRenamed',       none, none, none, none },
+        { 'NvimTreeGitStaged',        none, none, none, none },
     }
 end
