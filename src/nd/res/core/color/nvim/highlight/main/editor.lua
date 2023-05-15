@@ -2,12 +2,16 @@ local tab_lib    = require 'nd.lib.core.tab'
 local type_lib   = require 'nd.lib.core.type'
 local assert_lib = require 'nd.lib.core.assert'
 
-local merge      = tab_lib.merge
+local clone_with = tab_lib.clone_with
 
 local is_tab     = type_lib.is_tab
 
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.color.nvim.highlight.main.ext.editor'
+
+--
+-- Group = { fg, bg, sp, gui, link }
+--
 
 return function(config)
     local palette = config.palette
@@ -17,22 +21,22 @@ return function(config)
     nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type table')
 
     return {
-        Normal       = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil },
-        NormalNC     = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil },
-        StatusLine   = { fg = palette.fg.normal, bg = palette.bg.normal, sp = nil, link = nil },
-        StatusLineNC = { fg = palette.bg.normal, bg = palette.bg.normal, sp = nil, link = nil },
+        Normal       = { palette.fg.normal, nil, nil, nil },
+        NormalNC     = { palette.fg.normal, nil, nil, nil },
+        StatusLine   = { palette.fg.normal, palette.bg.normal, nil, nil },
+        StatusLineNC = { palette.bg.normal, palette.bg.normal, nil, nil },
 
-        Cursor       = { fg = nil, bg = nil, sp = nil, link = nil },
-        CursorLine   = { fg = palette.bg.normal, bg = palette.fg.normal, sp = nil, link = nil },
-        CursorColumn = { fg = palette.bg.normal, bg = palette.fg.normal, sp = nil, link = nil },
-        TermCursor   = { fg = palette.bg.normal, bg = palette.fg.normal, sp = nil, link = nil },
-        TermCursorNC = { fg = palette.bg.normal, bg = palette.fg.normal, sp = nil, link = nil },
+        Cursor       = { nil, nil, nil, nil },
+        CursorLine   = { palette.bg.normal, palette.fg.normal, nil, nil },
+        CursorColumn = { palette.bg.normal, palette.fg.normal, nil, nil },
+        TermCursor   = { palette.bg.normal, palette.fg.normal, nil, nil },
+        TermCursorNC = { palette.bg.normal, palette.fg.normal, nil, nil },
 
-        Error        = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        ErrorMsg     = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        WarningMsg   = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        MoreMsg      = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        ModeMsg      = { fg = palette.white.light, bg = nil, sp = nil, link = nil },
+        Error        = { palette.red.normal, nil, nil, nil },
+        ErrorMsg     = { palette.red.normal, nil, nil, nil },
+        WarningMsg   = { palette.yellow.normal, nil, nil, nil },
+        MoreMsg      = { palette.green.normal, nil, nil, nil },
+        ModeMsg      = { palette.white.light, nil, nil, nil },
 
 
         DiagnosticError            = accent.diag.error,
@@ -45,10 +49,10 @@ return function(config)
         DiagnosticVirtualTextInfo  = accent.diag.info,
         DiagnosticVirtualTextHint  = accent.diag.hint,
 
-        DiagnosticUnderlineError   = merge { accent.diag.error, { underline = true } },
-        DiagnosticUnderlineWarn    = merge { accent.diag.warn, { underline = true } },
-        DiagnosticUnderlineInfo    = merge { accent.diag.info, { underline = true } },
-        DiagnosticUnderlineHint    = merge { accent.diag.hint, { underline = true } },
+        DiagnosticUnderlineError   = clone_with(accent.diag.error, { [4] = 'underline' }),
+        DiagnosticUnderlineWarn    = clone_with(accent.diag.warn, { [4] = 'underline' }),
+        DiagnosticUnderlineInfo    = clone_with(accent.diag.info, { [4] = 'underline' }),
+        DiagnosticUnderlineHint    = clone_with(accent.diag.hint, { [4] = 'underline' }),
 
         DiagnosticFloatingError    = accent.diag.error,
         DiagnosticFloatingWarn     = accent.diag.warn,
@@ -61,38 +65,32 @@ return function(config)
         DiagnosticSignHint         = accent.diag.hint,
 
 
-        WinSeparator = { fg = palette.black.light, bg = nil, sp = nil, link = nil },
-        VertSplit    = { fg = palette.black.light, bg = nil, sp = nil, link = nil },
+        WinSeparator = { palette.black.light, nil, nil, nil },
+        VertSplit    = { palette.black.light, nil, nil, nil },
 
-        SignColumn   = { fg = nil, bg = nil, sp = nil, link = nil },
-        EndOfBuffer  = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
+        SignColumn   = { nil, nil, nil, nil },
+        EndOfBuffer  = { palette.yellow.light, nil, nil, nil },
 
-        LineNr       = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        LineNrAbove  = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        LineNrBelow  = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
+        LineNr       = { palette.yellow.light, nil, nil, nil },
+        LineNrAbove  = { palette.yellow.light, nil, nil, nil },
+        LineNrBelow  = { palette.yellow.light, nil, nil, nil },
 
-        MatchParen   = {
-            fg = palette.bg.normal,
-            bg = palette.yellow.light,
-            sp = nil,
-            link = nil,
-            reverse = true,
-        },
-        Substitute   = { fg = palette.bg.normal, bg = palette.yellow.normal, sp = nil, link = nil },
-        IncSearch    = { fg = palette.bg.normal, bg = palette.yellow.light, sp = nil, link = nil },
-        Search       = { fg = palette.bg.normal, bg = palette.yellow.normal, sp = nil, link = nil },
-        Visual       = { fg = palette.bg.normal, bg = palette.yellow.light, sp = nil, link = nil },
+        MatchParen   = { palette.bg.normal, palette.yellow.light, nil, 'reverse' },
+        Substitute   = { palette.bg.normal, palette.yellow.normal, nil, nil },
+        IncSearch    = { palette.bg.normal, palette.yellow.light, nil, nil },
+        Search       = { palette.bg.normal, palette.yellow.normal, nil, nil },
+        Visual       = { palette.bg.normal, palette.yellow.light, nil, nil },
 
-        Title        = { fg = palette.red.normal, bg = nil, sp = nil, link = nil, bold = true },
-        Pmenu        = { fg = palette.fg.normal, bg = palette.bg.normal, sp = nil, link = nil },
-        PmenuSel     = { fg = palette.bg.normal, bg = palette.yellow.light, sp = nil, link = nil },
-        PmenuSbar    = { fg = nil, bg = palette.bg.normal, sp = nil, link = nil },
-        PmenuThumb   = { fg = nil, bg = palette.yellow.light, sp = nil, link = nil },
+        Title        = { palette.red.normal, nil, nil, 'bold' },
+        Pmenu        = { palette.fg.normal, palette.bg.normal, nil, nil },
+        PmenuSel     = { palette.bg.normal, palette.yellow.light, nil, nil },
+        PmenuSbar    = { nil, palette.bg.normal, nil, nil },
+        PmenuThumb   = { nil, palette.yellow.light, nil, nil },
 
-        Directory    = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil },
-        DiffAdd      = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        DiffChange   = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        DiffDelete   = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        DiffText     = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil },
+        Directory    = { palette.fg.normal, nil, nil, nil },
+        DiffAdd      = { palette.green.normal, nil, nil, nil },
+        DiffChange   = { palette.yellow.normal, nil, nil, nil },
+        DiffDelete   = { palette.red.normal, nil, nil, nil },
+        DiffText     = { palette.fg.normal, nil, nil, nil },
     }
 end

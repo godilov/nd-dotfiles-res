@@ -6,6 +6,10 @@ local is_tab     = type_lib.is_tab
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.color.nvim.highlight.main.ext.syntax'
 
+--
+-- Group = { fg, bg, sp, gui, link }
+--
+
 return function(config)
     local palette = config.palette
     local accent  = config.accent
@@ -14,48 +18,48 @@ return function(config)
     nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type table')
 
     return {
-        Error          = { fg = palette.red.normal, bg = nil, sp = nil, link = nil, reverse = true },
+        Error          = { palette.red.normal, nil, nil, 'reverse' },
 
         Comment        = accent.comment,
-        Constant       = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        String         = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        Character      = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        Number         = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        Float          = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        Boolean        = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
+        Constant       = { palette.green.normal, nil, nil, nil },
+        String         = { palette.green.normal, nil, nil, nil },
+        Character      = { palette.green.normal, nil, nil, nil },
+        Number         = { palette.green.normal, nil, nil, nil },
+        Float          = { palette.green.normal, nil, nil, nil },
+        Boolean        = { palette.green.normal, nil, nil, nil },
 
-        Identifier     = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil },
-        Function       = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
+        Identifier     = { palette.fg.normal, nil, nil, nil },
+        Function       = { palette.red.normal, nil, nil, nil },
 
-        Statement      = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        Conditional    = { fg = palette.blue.light, bg = nil, sp = nil, link = nil },
-        Repeat         = { fg = palette.blue.light, bg = nil, sp = nil, link = nil },
-        Label          = { fg = palette.blue.light, bg = nil, sp = nil, link = nil },
-        Operator       = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil },
-        Keyword        = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        Exception      = { fg = palette.blue.light, bg = nil, sp = nil, link = nil },
+        Statement      = { palette.yellow.light, nil, nil, nil },
+        Conditional    = { palette.blue.light, nil, nil, nil },
+        Repeat         = { palette.blue.light, nil, nil, nil },
+        Label          = { palette.blue.light, nil, nil, nil },
+        Operator       = { palette.fg.normal, nil, nil, nil },
+        Keyword        = { palette.yellow.light, nil, nil, nil },
+        Exception      = { palette.blue.light, nil, nil, nil },
 
-        PreProc        = { fg = palette.red.light, bg = nil, sp = nil, link = nil },
-        PreCondit      = { fg = palette.red.light, bg = nil, sp = nil, link = nil },
-        Include        = { fg = palette.red.light, bg = nil, sp = nil, link = nil },
-        Define         = { fg = palette.red.light, bg = nil, sp = nil, link = nil },
-        Macro          = { fg = palette.red.light, bg = nil, sp = nil, link = nil },
+        PreProc        = { palette.red.light, nil, nil, nil },
+        PreCondit      = { palette.red.light, nil, nil, nil },
+        Include        = { palette.red.light, nil, nil, nil },
+        Define         = { palette.red.light, nil, nil, nil },
+        Macro          = { palette.red.light, nil, nil, nil },
 
-        Type           = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        StorageClass   = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        Structure      = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        Typedef        = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
+        Type           = { palette.yellow.normal, nil, nil, nil },
+        StorageClass   = { palette.yellow.normal, nil, nil, nil },
+        Structure      = { palette.yellow.normal, nil, nil, nil },
+        Typedef        = { palette.yellow.normal, nil, nil, nil },
 
-        Tag            = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil, bold = true },
-        Special        = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        SpecialChar    = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        SpecialComment = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        Delimiter      = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil, bold = true },
-        Debug          = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
+        Tag            = { palette.yellow.light, nil, nil, 'bold' },
+        Special        = { palette.yellow.light, nil, nil, nil },
+        SpecialChar    = { palette.yellow.light, nil, nil, nil },
+        SpecialComment = { palette.yellow.light, nil, nil, nil },
+        Delimiter      = { palette.yellow.light, nil, nil, 'bold' },
+        Debug          = { palette.red.normal, nil, nil, nil },
 
-        Todo           = { fg = palette.blue.normal, bg = nil, sp = nil, link = nil, reverse = true },
-        Bold           = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil, bold = true },
-        Italic         = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil, italic = true },
-        Underlined     = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil, underline = true },
+        Todo           = { palette.blue.normal, nil, nil, 'reverse' },
+        Bold           = { palette.fg.normal, nil, nil, 'bold' },
+        Italic         = { palette.fg.normal, nil, nil, 'italic' },
+        Underlined     = { palette.fg.normal, nil, nil, 'underline' },
     }
 end

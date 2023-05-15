@@ -6,6 +6,10 @@ local is_tab     = type_lib.is_tab
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.color.nvim.highlight.main.ext.cmp'
 
+--
+-- Group = { fg, bg, sp, gui, link }
+--
+
 return function(config)
     local palette = config.palette
     local accent  = config.accent
@@ -17,43 +21,43 @@ return function(config)
         -- cmp-highlight
         -- prefix: Cmp
 
-        CmpDocumentation       = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        CmpDocumentationBorder = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
+        CmpDocumentation       = { palette.red.normal, nil, nil, nil },
+        CmpDocumentationBorder = { palette.red.normal, nil, nil, nil },
 
-        -- CmpItemAbbr           = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemAbbrDeprecated = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemAbbrMatch      = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemAbbrMatchFuzzy = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- CmpItemAbbr           = { nil, nil, nil, nil },
+        -- CmpItemAbbrDeprecated = { nil, nil, nil, nil },
+        -- CmpItemAbbrMatch      = { nil, nil, nil, nil },
+        -- CmpItemAbbrMatchFuzzy = { nil, nil, nil, nil },
 
-        -- CmpItemKindDefault = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemMenu        = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- CmpItemKindDefault = { nil, nil, nil, nil },
+        -- CmpItemMenu        = { nil, nil, nil, nil },
 
-        -- CmpItemKindKeyword = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- CmpItemKindKeyword = { nil, nil, nil, nil },
 
-        -- CmpItemKindVariable  = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindConstant  = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindReference = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindValue     = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- CmpItemKindVariable  = { nil, nil, nil, nil },
+        -- CmpItemKindConstant  = { nil, nil, nil, nil },
+        -- CmpItemKindReference = { nil, nil, nil, nil },
+        -- CmpItemKindValue     = { nil, nil, nil, nil },
 
-        -- CmpItemKindFunction    = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindMethod      = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindConstructor = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- CmpItemKindFunction    = { nil, nil, nil, nil },
+        -- CmpItemKindMethod      = { nil, nil, nil, nil },
+        -- CmpItemKindConstructor = { nil, nil, nil, nil },
 
-        -- CmpItemKindInterface = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindEvent     = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindEnum      = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindUnit      = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- CmpItemKindInterface = { nil, nil, nil, nil },
+        -- CmpItemKindEvent     = { nil, nil, nil, nil },
+        -- CmpItemKindEnum      = { nil, nil, nil, nil },
+        -- CmpItemKindUnit      = { nil, nil, nil, nil },
 
-        -- CmpItemKindClass  = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindStruct = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- CmpItemKindClass  = { nil, nil, nil, nil },
+        -- CmpItemKindStruct = { nil, nil, nil, nil },
 
-        -- CmpItemKindModule = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- CmpItemKindModule = { nil, nil, nil, nil },
 
-        -- CmpItemKindProperty      = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindField         = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindTypeParameter = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindEnumMember    = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindOperator      = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- CmpItemKindSnippet       = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- CmpItemKindProperty      = { nil, nil, nil, nil },
+        -- CmpItemKindField         = { nil, nil, nil, nil },
+        -- CmpItemKindTypeParameter = { nil, nil, nil, nil },
+        -- CmpItemKindEnumMember    = { nil, nil, nil, nil },
+        -- CmpItemKindOperator      = { nil, nil, nil, nil },
+        -- CmpItemKindSnippet       = { nil, nil, nil, nil },
     }
 end

@@ -6,6 +6,10 @@ local is_tab     = type_lib.is_tab
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.color.nvim.highlight.main.ext.tree'
 
+--
+-- Group = { fg, bg, sp, gui, link }
+--
+
 return function(config)
     local palette = config.palette
     local accent  = config.accent
@@ -16,25 +20,25 @@ return function(config)
     return {
         -- nvim-tree-highlight
 
-        -- NvimTreeNormal       = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeVertSplit    = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeIndentMarker = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- NvimTreeNormal       = { nil, nil, nil, nil },
+        -- NvimTreeVertSplit    = { nil, nil, nil, nil },
+        -- NvimTreeIndentMarker = { nil, nil, nil, nil },
 
-        -- NvimTreeRootFolder       = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeFolderName       = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeFolderIcon       = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeOpenedFolderName = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeEmptyFolderName  = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeSymlink          = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeSpecialFile      = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeImageFile        = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeOpenedFile       = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- NvimTreeRootFolder       = { nil, nil, nil, nil },
+        -- NvimTreeFolderName       = { nil, nil, nil, nil },
+        -- NvimTreeFolderIcon       = { nil, nil, nil, nil },
+        -- NvimTreeOpenedFolderName = { nil, nil, nil, nil },
+        -- NvimTreeEmptyFolderName  = { nil, nil, nil, nil },
+        -- NvimTreeSymlink          = { nil, nil, nil, nil },
+        -- NvimTreeSpecialFile      = { nil, nil, nil, nil },
+        -- NvimTreeImageFile        = { nil, nil, nil, nil },
+        -- NvimTreeOpenedFile       = { nil, nil, nil, nil },
 
-        -- NvimTreeGitDeleted = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeGitDirty   = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeGitMerge   = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeGitNew     = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeGitRenamed = { fg = nil, bg = nil, sp = nil, link = nil },
-        -- NvimTreeGitStaged  = { fg = nil, bg = nil, sp = nil, link = nil },
+        -- NvimTreeGitDeleted = { nil, nil, nil, nil },
+        -- NvimTreeGitDirty   = { nil, nil, nil, nil },
+        -- NvimTreeGitMerge   = { nil, nil, nil, nil },
+        -- NvimTreeGitNew     = { nil, nil, nil, nil },
+        -- NvimTreeGitRenamed = { nil, nil, nil, nil },
+        -- NvimTreeGitStaged  = { nil, nil, nil, nil },
     }
 end

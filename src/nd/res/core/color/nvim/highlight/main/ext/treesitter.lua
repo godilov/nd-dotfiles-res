@@ -6,6 +6,10 @@ local is_tab     = type_lib.is_tab
 local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.color.nvim.highlight.main.ext.treesitter'
 
+--
+-- Group = { fg, bg, sp, gui, link }
+--
+
 return function(config)
     local palette = config.palette
     local accent  = config.accent
@@ -21,127 +25,127 @@ return function(config)
 
 
         ['@comment']               = accent.comment,
-        ['@debug']                 = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        ['@error']                 = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        ['@punctuation']           = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        ['@punctuation.delimiter'] = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        ['@punctuation.bracket']   = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        ['@punctuation.special']   = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
+        ['@debug']                 = { palette.red.normal, nil, nil, nil },
+        ['@error']                 = { palette.red.normal, nil, nil, nil },
+        ['@punctuation']           = { palette.yellow.light, nil, nil, nil },
+        ['@punctuation.delimiter'] = { palette.yellow.light, nil, nil, nil },
+        ['@punctuation.bracket']   = { palette.yellow.light, nil, nil, nil },
+        ['@punctuation.special']   = { palette.yellow.light, nil, nil, nil },
 
 
         -- Constants
 
 
-        ['@constant']          = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil, underline = true },
-        ['@constant.builtin']  = { fg = palette.cyan.light, bg = nil, sp = nil, link = nil },
-        ['@constant.macro']    = { fg = palette.cyan.light, bg = nil, sp = nil, link = nil },
-        ['@string']            = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        ['@string.regex']      = { fg = palette.blue.light, bg = nil, sp = nil, link = nil },
-        ['@string.escape']     = { fg = palette.blue.light, bg = nil, sp = nil, link = nil },
-        ['@string.special']    = { fg = palette.blue.light, bg = nil, sp = nil, link = nil },
-        ['@character']         = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        ['@character.special'] = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        ['@number']            = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        ['@boolean']           = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
-        ['@float']             = { fg = palette.green.normal, bg = nil, sp = nil, link = nil },
+        ['@constant']          = { palette.fg.normal, nil, nil, 'underline' },
+        ['@constant.builtin']  = { palette.cyan.light, nil, nil, nil },
+        ['@constant.macro']    = { palette.cyan.light, nil, nil, nil },
+        ['@string']            = { palette.green.normal, nil, nil, nil },
+        ['@string.regex']      = { palette.blue.light, nil, nil, nil },
+        ['@string.escape']     = { palette.blue.light, nil, nil, nil },
+        ['@string.special']    = { palette.blue.light, nil, nil, nil },
+        ['@character']         = { palette.green.normal, nil, nil, nil },
+        ['@character.special'] = { palette.green.normal, nil, nil, nil },
+        ['@number']            = { palette.green.normal, nil, nil, nil },
+        ['@boolean']           = { palette.green.normal, nil, nil, nil },
+        ['@float']             = { palette.green.normal, nil, nil, nil },
 
 
         -- Functions
 
 
-        ['@function']         = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        ['@function.call']    = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        ['@function.builtin'] = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        ['@function.macro']   = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        ['@parameter']        = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil },
-        ['@method']           = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        ['@method.call']      = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        ['@field']            = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        ['@property']         = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        ['@constructor']      = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
+        ['@function']         = { palette.red.normal, nil, nil, nil },
+        ['@function.call']    = { palette.red.normal, nil, nil, nil },
+        ['@function.builtin'] = { palette.red.normal, nil, nil, nil },
+        ['@function.macro']   = { palette.red.normal, nil, nil, nil },
+        ['@parameter']        = { palette.fg.normal, nil, nil, nil },
+        ['@method']           = { palette.red.normal, nil, nil, nil },
+        ['@method.call']      = { palette.red.normal, nil, nil, nil },
+        ['@field']            = { palette.yellow.normal, nil, nil, nil },
+        ['@property']         = { palette.yellow.normal, nil, nil, nil },
+        ['@constructor']      = { palette.yellow.light, nil, nil, nil },
 
 
         -- Keywords
 
 
-        ['@conditional']      = { fg = palette.blue.light, bg = nil, sp = nil, link = nil },
-        ['@repeat']           = { fg = palette.blue.light, bg = nil, sp = nil, link = nil },
-        ['@label']            = { fg = palette.blue.light, bg = nil, sp = nil, link = nil },
-        ['@keyword']          = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        ['@keyword.function'] = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        ['@keyword.operator'] = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        ['@keyword.return']   = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        ['@operator']         = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil },
-        ['@exception']        = { fg = palette.blue.light, bg = nil, sp = nil, link = nil },
-        ['@preproc']          = { fg = palette.red.light, bg = nil, sp = nil, link = nil },
-        ['@include']          = { fg = palette.red.light, bg = nil, sp = nil, link = nil },
-        ['@define']           = { fg = palette.red.light, bg = nil, sp = nil, link = nil },
-        ['@macro']            = { fg = palette.red.light, bg = nil, sp = nil, link = nil },
-        ['@type']             = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        ['@type.builtin']     = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        ['@type.definition']  = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        ['@type.qualifier']   = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        ['@storageclass']     = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        ['@namespace']        = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        ['@symbol']           = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
-        ['@attribute']        = { fg = palette.yellow.light, bg = nil, sp = nil, link = nil },
+        ['@conditional']      = { palette.blue.light, nil, nil, nil },
+        ['@repeat']           = { palette.blue.light, nil, nil, nil },
+        ['@label']            = { palette.blue.light, nil, nil, nil },
+        ['@keyword']          = { palette.yellow.light, nil, nil, nil },
+        ['@keyword.function'] = { palette.yellow.light, nil, nil, nil },
+        ['@keyword.operator'] = { palette.yellow.light, nil, nil, nil },
+        ['@keyword.return']   = { palette.yellow.light, nil, nil, nil },
+        ['@operator']         = { palette.fg.normal, nil, nil, nil },
+        ['@exception']        = { palette.blue.light, nil, nil, nil },
+        ['@preproc']          = { palette.red.light, nil, nil, nil },
+        ['@include']          = { palette.red.light, nil, nil, nil },
+        ['@define']           = { palette.red.light, nil, nil, nil },
+        ['@macro']            = { palette.red.light, nil, nil, nil },
+        ['@type']             = { palette.yellow.normal, nil, nil, nil },
+        ['@type.builtin']     = { palette.yellow.normal, nil, nil, nil },
+        ['@type.definition']  = { palette.yellow.normal, nil, nil, nil },
+        ['@type.qualifier']   = { palette.yellow.normal, nil, nil, nil },
+        ['@storageclass']     = { palette.yellow.light, nil, nil, nil },
+        ['@namespace']        = { palette.yellow.light, nil, nil, nil },
+        ['@symbol']           = { palette.yellow.light, nil, nil, nil },
+        ['@attribute']        = { palette.yellow.light, nil, nil, nil },
 
 
         -- Variables
 
 
-        ['@variable']         = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil },
-        ['@variable.builtin'] = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil },
+        ['@variable']         = { palette.fg.normal, nil, nil, nil },
+        ['@variable.builtin'] = { palette.fg.normal, nil, nil, nil },
 
 
 
         -- Text
 
 
-        ['@text']                 = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil },
-        ['@text.strong']          = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil, bold = true },
-        ['@text.emphasis']        = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil, italic = true },
-        ['@text.underline']       = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil, underline = true },
-        ['@text.strike']          = { fg = palette.fg.normal, bg = nil, sp = nil, link = nil, strikethrough = true },
-        ['@text.title']           = { fg = palette.red.normal, bg = nil, sp = nil, link = nil, bold = true },
-        ['@text.literal']         = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        ['@text.uri']             = { fg = palette.blue.normal, bg = nil, sp = nil, link = nil, underline = true },
-        ['@text.math']            = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        ['@text.environment']     = { fg = palette.cyan.normal, bg = nil, sp = nil, link = nil },
-        ['@text.environmentName'] = { fg = palette.cyan.normal, bg = nil, sp = nil, link = nil },
-        ['@text.reference']       = { fg = palette.blue.normal, bg = nil, sp = nil, link = nil },
-        ['@text.note']            = { fg = palette.green.normal, bg = nil, sp = nil, link = nil, reverse = true },
-        ['@text.warning']         = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil, reverse = true },
-        ['@text.danger']          = { fg = palette.red.normal, bg = nil, sp = nil, link = nil, reverse = true },
-        ['@todo']                 = { fg = palette.blue.normal, bg = nil, sp = nil, link = nil, reverse = true },
+        ['@text']                 = { palette.fg.normal, nil, nil, nil },
+        ['@text.strong']          = { palette.fg.normal, nil, nil, 'bold' },
+        ['@text.emphasis']        = { palette.fg.normal, nil, nil, 'italic' },
+        ['@text.underline']       = { palette.fg.normal, nil, nil, 'underline' },
+        ['@text.strike']          = { palette.fg.normal, nil, nil, 'strikethrough' },
+        ['@text.title']           = { palette.red.normal, nil, nil, 'bold' },
+        ['@text.literal']         = { palette.red.normal, nil, nil, nil },
+        ['@text.uri']             = { palette.blue.normal, nil, nil, 'underline' },
+        ['@text.math']            = { palette.yellow.normal, nil, nil, nil },
+        ['@text.environment']     = { palette.cyan.normal, nil, nil, nil },
+        ['@text.environmentName'] = { palette.cyan.normal, nil, nil, nil },
+        ['@text.reference']       = { palette.blue.normal, nil, nil, nil },
+        ['@text.note']            = { palette.green.normal, nil, nil, 'reverse' },
+        ['@text.warning']         = { palette.yellow.normal, nil, nil, 'reverse' },
+        ['@text.danger']          = { palette.red.normal, nil, nil, 'reverse' },
+        ['@todo']                 = { palette.blue.normal, nil, nil, 'reverse' },
 
 
         -- Tags
 
 
-        ['@tag']           = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
-        ['@tag.attribute'] = { fg = palette.red.normal, bg = nil, sp = nil, link = nil },
-        ['@tag.delimiter'] = { fg = palette.yellow.normal, bg = nil, sp = nil, link = nil },
+        ['@tag']           = { palette.yellow.normal, nil, nil, nil },
+        ['@tag.attribute'] = { palette.red.normal, nil, nil, nil },
+        ['@tag.delimiter'] = { palette.yellow.normal, nil, nil, nil },
 
 
         -- Lsp
 
 
-        ['@lsp.type.comment']       = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.variable']      = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.property']      = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.parameter']     = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.function']      = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.macro']         = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.enum']          = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.enumMember']    = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.type']          = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.typeParameter'] = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.struct']        = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.class']         = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.method']        = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.namespace']     = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.interface']     = { fg = nil, bg = nil, sp = nil, link = nil },
-        ['@lsp.type.decorator']     = { fg = nil, bg = nil, sp = nil, link = nil },
+        ['@lsp.type.comment']       = { nil, nil, nil, nil },
+        ['@lsp.type.variable']      = { nil, nil, nil, nil },
+        ['@lsp.type.property']      = { nil, nil, nil, nil },
+        ['@lsp.type.parameter']     = { nil, nil, nil, nil },
+        ['@lsp.type.function']      = { nil, nil, nil, nil },
+        ['@lsp.type.macro']         = { nil, nil, nil, nil },
+        ['@lsp.type.enum']          = { nil, nil, nil, nil },
+        ['@lsp.type.enumMember']    = { nil, nil, nil, nil },
+        ['@lsp.type.type']          = { nil, nil, nil, nil },
+        ['@lsp.type.typeParameter'] = { nil, nil, nil, nil },
+        ['@lsp.type.struct']        = { nil, nil, nil, nil },
+        ['@lsp.type.class']         = { nil, nil, nil, nil },
+        ['@lsp.type.method']        = { nil, nil, nil, nil },
+        ['@lsp.type.namespace']     = { nil, nil, nil, nil },
+        ['@lsp.type.interface']     = { nil, nil, nil, nil },
+        ['@lsp.type.decorator']     = { nil, nil, nil, nil },
     }
 end
