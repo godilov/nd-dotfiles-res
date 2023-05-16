@@ -75,6 +75,7 @@ get_test_cases = function()
                 palette   = 'main',
                 accent    = 'main',
                 highlight = 'main',
+                special   = 'main',
             },
             res = {},
             fn = nvim_color_fn,

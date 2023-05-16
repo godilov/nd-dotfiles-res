@@ -91,7 +91,6 @@ get_nvim = function(config, is_forced)
     return get_scheme_cache(nvim_fn, config, key, is_forced)
 end
 
-
 return {
     get_awesome = get_awesome,
     get_nvim    = get_nvim,
