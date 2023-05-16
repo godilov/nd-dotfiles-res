@@ -1,5 +1,8 @@
+local tab_lib    = require 'nd.lib.core.tab'
 local type_lib   = require 'nd.lib.core.type'
 local assert_lib = require 'nd.lib.core.assert'
+
+local concat     = tab_lib.concat
 
 local is_tab     = type_lib.is_tab
 
@@ -19,5 +22,7 @@ return function(config)
 
     return {
         -- indent-blankline-highlights
+
+        concat { { 'IndentBlanklineChar' }, accent.comment },
     }
 end

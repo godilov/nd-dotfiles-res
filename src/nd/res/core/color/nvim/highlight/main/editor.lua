@@ -66,11 +66,9 @@ return function(config)
         concat { { 'DiagnosticSignInfo' }, accent.diag.info },
         concat { { 'DiagnosticSignHint' }, accent.diag.hint },
         --
-        { 'WinSeparator', palette.black.light,   none,                  none, none },
-        { 'VertSplit',    palette.black.light,   none,                  none, none },
-        --
-        { 'SignColumn',   none,                  none,                  none, none },
+        { 'WinSeparator', palette.bg.normal,     palette.bg.normal,     none, none },
         { 'EndOfBuffer',  palette.yellow.light,  none,                  none, none },
+        { 'SignColumn',   none,                  none,                  none, none },
         --
         { 'LineNr',       palette.yellow.light,  none,                  none, none },
         { 'LineNrAbove',  palette.yellow.light,  none,                  none, none },
