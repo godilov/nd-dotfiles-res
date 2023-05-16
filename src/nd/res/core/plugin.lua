@@ -3,7 +3,7 @@ return function()
         { 'wbthomason',      'packer.nvim' },
         { 'nvim-lua',        'plenary.nvim' },
         { 'kyazdani42',      'nvim-web-devicons' },
-        { 'startup-nvim',    'startup.nvim' },
+        { 'nvimdev',         'dashboard-nvim' },
         { 'akinsho',         'bufferline.nvim' },
         { 'nvim-lualine',    'lualine.nvim' },
         { 'nvim-treesitter', 'nvim-treesitter' },

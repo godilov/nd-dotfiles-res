@@ -26,6 +26,7 @@ return function(config)
             { '',  '<down>',             '<nop>',                         opts },
             { '',  '<left>',             '<nop>',                         opts },
             { '',  '<right>',            '<nop>',                         opts },
+            { 'n', '<F2>',               '<CMD>Dashboard<CR>',            opts },
             { 'n', '<F33>',              '<CMD>NdApplyConfig<CR>',        opts },
             { 'n', '<F34>',              '<CMD>NdApplyFile<CR>',          opts },
             { 'n', concat2s(files, 'd'), '<CMD>NvimTreeToggle<CR>',       opts },
@@ -51,7 +52,7 @@ return function(config)
             { 'n', '<M-j>',              '<CMD>:tabclose<CR>',            opts },
             { 'n', '<M-k>',              '<CMD>:tabnew<CR>',              opts },
             { 'n', '<M-l>',              '<CMD>:tabnext<CR>',             opts },
-            { 'n', '<C-M-h>',            '<CMD>:-tabmove<CR>',             opts },
+            { 'n', '<C-M-h>',            '<CMD>:-tabmove<CR>',            opts },
             { 'n', '<C-M-l>',            '<CMD>:+tabmove<CR>',            opts },
         }
     end
