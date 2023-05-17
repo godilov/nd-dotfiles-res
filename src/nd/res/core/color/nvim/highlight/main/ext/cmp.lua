@@ -3,7 +3,7 @@ local assert_lib = require 'nd.lib.core.assert'
 
 local is_tab     = type_lib.is_tab
 
-local nd_assert  = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
+local nd_assert  = assert_lib.get_fn(ND_RES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.color.nvim.highlight.main.ext.cmp'
 
 --

@@ -3,7 +3,7 @@ local assert_lib    = require 'nd.lib.core.assert'
 
 local is_tab        = type_lib.is_tab
 
-local nd_assert     = assert_lib.get_fn(ND_RESOURCES_IS_DEBUG)
+local nd_assert     = assert_lib.get_fn(ND_RES_IS_DEBUG)
 local nd_err        = assert_lib.get_err_fn 'nd.res.core.language.nvim.lsp'
 
 local bash_fn       = require 'nd.res.core.language.nvim.lsp.bash'
@@ -24,21 +24,21 @@ return function(config)
     nd_assert(is_tab(config), nd_err, 'fn(): config must be of type table')
 
     return {
-        bashls        = bash_fn(config.bash),
-        lua_ls        = lua_fn(config.lua),
+        { 'bashls',        bash_fn(config.bash) },
+        { 'lua_ls',        lua_fn(config.lua) },
 
-        cmake         = cmake_fn(config.cmake),
-        ccls          = cpp_fn(config.cpp),
-        rust_analyzer = rust_fn(config.rust),
+        { 'cmake',         cmake_fn(config.cmake) },
+        { 'ccls',          cpp_fn(config.cpp) },
+        { 'rust_analyzer', rust_fn(config.rust) },
 
-        omnisharp     = csharp_fn(config.csharp),
-        sqlls         = sql_fn(config.sql),
-        html          = html_fn(config.html),
-        cssls         = css_fn(config.css),
-        tsserver      = typescript_fn(config.typescript),
+        { 'omnisharp',     csharp_fn(config.csharp) },
+        { 'sqlls',         sql_fn(config.sql) },
+        { 'html',          html_fn(config.html) },
+        { 'cssls',         css_fn(config.css) },
+        { 'tsserver',      typescript_fn(config.typescript) },
 
-        jsonls        = json_ls(config.json),
-        yamlls        = yaml_fn(config.yaml),
-        taplo         = toml_fn(config.toml),
+        { 'jsonls',        json_ls(config.json) },
+        { 'yamlls',        yaml_fn(config.yaml) },
+        { 'taplo',         toml_fn(config.toml) },
     }
 end

@@ -26,7 +26,7 @@ init = function(root, is_debug, is_dep)
 
     package.path = format('%s;%s;%s', package.path, entry_file, entry_init)
 
-    ND_RESOURCES_IS_DEBUG = ND_RESOURCES_IS_DEBUG or is_debug
+    ND_RES_IS_DEBUG = ND_RES_IS_DEBUG or is_debug
 
     if not is_dep then
         require 'ext.nd.lib.init'.init(root, is_debug, true)
