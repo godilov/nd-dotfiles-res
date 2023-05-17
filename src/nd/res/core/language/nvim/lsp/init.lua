@@ -12,6 +12,7 @@ local cmake_fn      = require 'nd.res.core.language.nvim.lsp.cmake'
 local cpp_fn        = require 'nd.res.core.language.nvim.lsp.cpp'
 local glsl_fn       = require 'nd.res.core.language.nvim.lsp.glsl'
 local rust_fn       = require 'nd.res.core.language.nvim.lsp.rust'
+local haskell_fn    = require 'nd.res.core.language.nvim.lsp.haskell'
 local csharp_fn     = require 'nd.res.core.language.nvim.lsp.csharp'
 local sql_fn        = require 'nd.res.core.language.nvim.lsp.sql'
 local html_fn       = require 'nd.res.core.language.nvim.lsp.html'
@@ -32,6 +33,7 @@ return function(config)
         { 'ccls',          cpp_fn(config.cpp) },
         { 'glslls',        glsl_fn(config.glsl) },
         { 'rust_analyzer', rust_fn(config.rust) },
+        { 'hls',           haskell_fn(config.haskell) },
 
         { 'omnisharp',     csharp_fn(config.csharp) },
         { 'sqlls',         sql_fn(config.sql) },

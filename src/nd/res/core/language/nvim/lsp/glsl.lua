@@ -1,3 +1,3 @@
 return function(_)
-    return {}
+    return { skip = true }
 end
