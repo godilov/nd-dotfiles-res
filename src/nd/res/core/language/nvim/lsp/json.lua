@@ -1,3 +1,3 @@
-return function(config)
+return function(_)
     return {}
 end

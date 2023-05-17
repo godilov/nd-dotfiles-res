@@ -1,4 +1,4 @@
-return function(config)
+return function(_)
     return {
         yaml = {
             yamlVersion = 1.2,
