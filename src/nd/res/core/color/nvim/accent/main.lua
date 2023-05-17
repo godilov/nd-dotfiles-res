@@ -32,10 +32,10 @@ return function(config)
     }
 
     local note = {
-        error = clone_with(diag.error, { [4] = 'reverse' }),
-        warn  = clone_with(diag.warn, { [4] = 'reverse' }),
-        info  = clone_with(diag.info, { [4] = 'reverse' }),
-        todo  = clone_with(diag.todo, { [4] = 'reverse' }),
+        error = clone_with(diag.error, { [5] = 'reverse' }),
+        warn  = clone_with(diag.warn, { [5] = 'reverse' }),
+        info  = clone_with(diag.info, { [5] = 'reverse' }),
+        todo  = clone_with(diag.todo, { [5] = 'reverse' }),
     }
 
     return {

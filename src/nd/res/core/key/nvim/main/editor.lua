@@ -31,7 +31,7 @@ return function(config)
             { 'n', '<F34>',              '<CMD>NdApplyFile<CR>',          opts },
             { 'n', concat2s(files, 'd'), '<CMD>NvimTreeToggle<CR>',       opts },
             { 'n', concat2s(files, 'f'), '<CMD>Telescope find_files<CR>', opts },
-            { 'n', concat2s(files, 'g'), '<CMD>Telescope git_files<CR>',  opts },
+            { 'n', concat2s(files, 'g'), '<CMD>Telescope git_status<CR>', opts },
             { 'n', concat2s(files, ';'), '<CMD>Telescope live_grep<CR>',  opts },
             { 'n', concat2s(files, '`'), '<CMD>Telescope help_tags<CR>',  opts },
             { 'n', concat2s(files, '~'), '<CMD>Telescope highlights<CR>', opts },
