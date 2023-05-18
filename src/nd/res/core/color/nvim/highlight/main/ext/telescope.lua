@@ -20,31 +20,31 @@ return function(config)
     local none = 'NONE'
 
     return {
-        { 'TelescopeNormal',                 none,                  none,                 none, none, 'Normal' },
-        { 'TelescopePreviewNormal',          none,                  none,                 none, none, 'Normal' },
-        { 'TelescopePromptNormal',           none,                  none,                 none, none, 'Normal' },
-        { 'TelescopeResultsNormal',          none,                  none,                 none, none, 'Normal' },
+        { 'TelescopeNormal',                 palette.fg.normal,     none,                 none, none },
+        { 'TelescopePreviewNormal',          palette.fg.normal,     none,                 none, none },
+        { 'TelescopePromptNormal',           palette.fg.normal,     none,                 none, none },
+        { 'TelescopeResultsNormal',          palette.fg.normal,     none,                 none, none },
         --
-        { 'TelescopeSelection',              none,                  none,                 none, none, 'TelescopeBorder' },
-        { 'TelescopeSelectionCaret',         none,                  none,                 none, none, 'TelescopeBorder' },
+        { 'TelescopeBorder',                 palette.yellow.light,  none,                 none, none },
+        { 'TelescopePromptBorder',           palette.yellow.light,  none,                 none, none },
+        { 'TelescopeResultsBorder',          palette.yellow.light,  none,                 none, none },
+        { 'TelescopePreviewBorder',          palette.yellow.light,  none,                 none, none },
+        --
+        { 'TelescopeSelection',              palette.yellow.light,  none,                 none, none },
+        { 'TelescopeSelectionCaret',         palette.yellow.light,  none,                 none, none },
         { 'TelescopeMultiSelection',         palette.red.normal,    none,                 none, none },
         { 'TelescopeMultiIcon',              palette.red.normal,    none,                 none, none },
         --
-        { 'TelescopeBorder',                 palette.yellow.light,  none,                 none, none },
-        { 'TelescopePromptBorder',           none,                  none,                 none, none, 'TelescopeBorder' },
-        { 'TelescopeResultsBorder',          none,                  none,                 none, none, 'TelescopeBorder' },
-        { 'TelescopePreviewBorder',          none,                  none,                 none, none, 'TelescopeBorder' },
-        --
-        { 'TelescopeTitle',                  none,                  none,                 none, none, 'TelescopeBorder' },
-        { 'TelescopePromptTitle',            none,                  none,                 none, none, 'TelescopeBorder' },
-        { 'TelescopeResultsTitle',           none,                  none,                 none, none, 'TelescopeBorder' },
-        { 'TelescopePreviewTitle',           none,                  none,                 none, none, 'TelescopeBorder' },
-        { 'TelescopePromptPrefix',           none,                  none,                 none, none, 'TelescopeBorder' },
+        { 'TelescopeTitle',                  palette.yellow.light,  none,                 none, none },
+        { 'TelescopePromptTitle',            palette.yellow.light,  none,                 none, none },
+        { 'TelescopeResultsTitle',           palette.yellow.light,  none,                 none, none },
+        { 'TelescopePreviewTitle',           palette.yellow.light,  none,                 none, none },
+        { 'TelescopePromptPrefix',           palette.yellow.light,  none,                 none, none },
         { 'TelescopePromptCounter',          palette.yellow.light,  none,                 none, none },
         { 'TelescopeMatching',               palette.bg.normal,     palette.yellow.light, none, none },
         --
         { 'TelescopePreviewLine',            none,                  none,                 none, none },
-        { 'TelescopePreviewMatch',           none,                  none,                 none, none, 'TelescopeMatching' },
+        { 'TelescopePreviewMatch',           palette.bg.normal,     palette.yellow.light, none, none },
         { 'TelescopePreviewPipe',            none,                  none,                 none, none },
         { 'TelescopePreviewCharDev',         none,                  none,                 none, none },
         { 'TelescopePreviewDirectory',       none,                  none,                 none, none },

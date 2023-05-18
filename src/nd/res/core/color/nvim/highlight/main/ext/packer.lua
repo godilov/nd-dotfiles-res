@@ -20,11 +20,27 @@ return function(config)
     local none = 'NONE'
 
     return {
-        { 'IndentBlanklineChar',               palette.black.light,  none, none, none },
-        { 'IndentBlanklineSpaceChar',          palette.black.light,  none, none, none },
-        { 'IndentBlanklineSpaceCharBlankLine', palette.black.light,  none, none, none },
-        { 'IndentBlanklineContextChar',        palette.yellow.light, none, none, none },
-        { 'IndentBlanklineContextStart',       palette.yellow.light, none, none, none },
-        { 'IndentBlanklineContextSpaceChar',   palette.yellow.light, none, none, none },
+        { 'packerPackageName',      palette.fg.normal,     none, none, none },
+        { 'packerPackageNotLoaded', palette.white.dark,    none, none, 'underline' },
+        { 'packerBool',             palette.green.normal,  none, none, none },
+        { 'packerString',           palette.green.normal,  none, none, none },
+        { 'packerSuccess',          palette.green.normal,  none, none, none },
+        { 'packerFail',             palette.red.normal,    none, none, none },
+        { 'packerStatus',           palette.blue.normal,   none, none, none },
+        { 'packerStatusSuccess',    palette.green.normal,  none, none, none },
+        { 'packerStatusFail',       palette.red.normal,    none, none, none },
+        { 'packerStatusCommit',     palette.blue.normal,   none, none, none },
+        { 'packerBreakingChange',   palette.yellow.normal, none, none, 'underline' },
+        --
+        { 'packerOutput',           palette.yellow.normal, none, none, none },
+        { 'packerHash',             palette.fg.normal,     none, none, none },
+        { 'packerRelDate',          palette.yellow.normal, none, none, none },
+        { 'packerWorking',          palette.cyan.normal,   none, none, none },
+        { 'packerProgress',         palette.green.normal,  none, none, none },
+        --
+        { 'packerTimeHigh',         palette.red.light,     none, none, none },
+        { 'packerTimeMedium',       palette.yellow.light,  none, none, none },
+        { 'packerTimeLow',          palette.green.light,   none, none, none },
+        { 'packerTimeTrivial',      palette.fg.normal,     none, none, none },
     }
 end

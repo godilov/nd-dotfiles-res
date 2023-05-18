@@ -24,6 +24,7 @@ return function(config)
 
     return {
         { 'Error',          palette.red.normal,    none, none, 'reverse' },
+
         concat { { 'Comment' }, accent.comment },
 
         { 'Constant',       palette.green.normal,  none, none, none },

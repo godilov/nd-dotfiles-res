@@ -20,8 +20,6 @@ return function(config)
     local none = 'NONE'
 
     return {
-        -- nvim-tree-highlight
-
         { 'NvimTreeSymlink',           none,                  none, none, none },
         { 'NvimTreeSymlinkIcon',       none,                  none, none, none },
         { 'NvimTreeSymlinkFolderName', none,                  none, none, none },

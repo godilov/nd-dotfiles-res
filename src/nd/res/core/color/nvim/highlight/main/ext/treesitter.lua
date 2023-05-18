@@ -23,8 +23,6 @@ return function(config)
     local none = 'NONE'
 
     return {
-        -- github: CONTRIBUTE.md
-
         -- Misc
 
         concat { { '@comment' }, accent.comment },

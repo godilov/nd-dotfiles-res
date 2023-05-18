@@ -20,9 +20,15 @@ return function(config)
     nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type table')
     nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type table')
 
-    return {
-        -- indent-blankline-highlights
+    local none = 'NONE'
 
+    return {
         concat { { 'IndentBlanklineChar' }, accent.comment },
+        concat { { 'IndentBlanklineSpaceChar' }, accent.comment },
+        concat { { 'IndentBlanklineSpaceCharBlankLine' }, accent.comment },
+        --
+        { 'IndentBlanklineContextChar',      palette.yellow.light, none, none, none },
+        { 'IndentBlanklineContextStart',     palette.yellow.light, none, none, none },
+        { 'IndentBlanklineContextSpaceChar', palette.yellow.light, none, none, none },
     }
 end
