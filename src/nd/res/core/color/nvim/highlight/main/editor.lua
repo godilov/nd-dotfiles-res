@@ -2,7 +2,7 @@ local tab_lib    = require 'nd.lib.core.tab'
 local type_lib   = require 'nd.lib.core.type'
 local assert_lib = require 'nd.lib.core.assert'
 
-local concat     = tab_lib.concat
+local flat       = tab_lib.flat
 local clone_with = tab_lib.clone_with
 
 local is_tab     = type_lib.is_tab
@@ -41,30 +41,30 @@ return function(config)
         { 'MoreMsg',      palette.green.normal,  none,              none, none },
         { 'ModeMsg',      palette.white.light,   none,              none, none },
         --
-        concat { { 'DiagnosticError' }, accent.diag.error },
-        concat { { 'DiagnosticWarn' }, accent.diag.warn },
-        concat { { 'DiagnosticInfo' }, accent.diag.info },
-        concat { { 'DiagnosticHint' }, accent.diag.hint },
+        flat { 'DiagnosticError', accent.diag.error },
+        flat { 'DiagnosticWarn', accent.diag.warn },
+        flat { 'DiagnosticInfo', accent.diag.info },
+        flat { 'DiagnosticHint', accent.diag.hint },
         --
-        concat { { 'DiagnosticVirtualTextError' }, accent.diag.error },
-        concat { { 'DiagnosticVirtualTextWarn' }, accent.diag.warn },
-        concat { { 'DiagnosticVirtualTextInfo' }, accent.diag.info },
-        concat { { 'DiagnosticVirtualTextHint' }, accent.diag.hint },
+        flat { 'DiagnosticVirtualTextError', accent.diag.error },
+        flat { 'DiagnosticVirtualTextWarn', accent.diag.warn },
+        flat { 'DiagnosticVirtualTextInfo', accent.diag.info },
+        flat { 'DiagnosticVirtualTextHint', accent.diag.hint },
         --
-        clone_with(concat { { 'DiagnosticUnderlineError' }, accent.diag.error }, { [5] = 'underline' }),
-        clone_with(concat { { 'DiagnosticUnderlineWarn' }, accent.diag.warn }, { [5] = 'underline' }),
-        clone_with(concat { { 'DiagnosticUnderlineInfo' }, accent.diag.info }, { [5] = 'underline' }),
-        clone_with(concat { { 'DiagnosticUnderlineHint' }, accent.diag.hint }, { [5] = 'underline' }),
+        flat { 'DiagnosticUnderlineError', clone_with(accent.diag.error, { [4] = 'underline' }) },
+        flat { 'DiagnosticUnderlineWarn', clone_with(accent.diag.warn, { [4] = 'underline' }) },
+        flat { 'DiagnosticUnderlineInfo', clone_with(accent.diag.info, { [4] = 'underline' }) },
+        flat { 'DiagnosticUnderlineHint', clone_with(accent.diag.hint, { [4] = 'underline' }) },
         --
-        concat { { 'DiagnosticFloatingError' }, accent.diag.error },
-        concat { { 'DiagnosticFloatingWarn' }, accent.diag.warn },
-        concat { { 'DiagnosticFloatingInfo' }, accent.diag.info },
-        concat { { 'DiagnosticFloatingHint' }, accent.diag.hint },
+        flat { 'DiagnosticFloatingError', accent.diag.error },
+        flat { 'DiagnosticFloatingWarn', accent.diag.warn },
+        flat { 'DiagnosticFloatingInfo', accent.diag.info },
+        flat { 'DiagnosticFloatingHint', accent.diag.hint },
         --
-        concat { { 'DiagnosticSignError' }, accent.diag.error },
-        concat { { 'DiagnosticSignWarn' }, accent.diag.warn },
-        concat { { 'DiagnosticSignInfo' }, accent.diag.info },
-        concat { { 'DiagnosticSignHint' }, accent.diag.hint },
+        flat { 'DiagnosticSignError', accent.diag.error },
+        flat { 'DiagnosticSignWarn', accent.diag.warn },
+        flat { 'DiagnosticSignInfo', accent.diag.info },
+        flat { 'DiagnosticSignHint', accent.diag.hint },
         --
         { 'WinSeparator', palette.bg.normal,     palette.bg.normal,     none, none },
         { 'EndOfBuffer',  palette.yellow.light,  none,                  none, none },

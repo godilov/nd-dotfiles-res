@@ -3,7 +3,7 @@ return function()
         'query',
         'bash', 'lua',
         'cmake', 'ninja',
-        'c', 'cpp', 'rust', 'cuda', 'glsl',
+        'c', 'cpp', 'rust', 'haskell', 'cuda', 'glsl',
         'c_sharp', 'sql',
         'html', 'css', 'scss', 'javascript', 'typescript',
         'json', 'yaml', 'toml',

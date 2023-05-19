@@ -2,7 +2,7 @@ local tab_lib    = require 'nd.lib.core.tab'
 local type_lib   = require 'nd.lib.core.type'
 local assert_lib = require 'nd.lib.core.assert'
 
-local concat     = tab_lib.concat
+local flat       = tab_lib.flat
 
 local is_tab     = type_lib.is_tab
 
@@ -20,118 +20,123 @@ return function(config)
     nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type table')
     nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type table')
 
-    local none = 'NONE'
+    local syntax = accent.syntax
+    local text   = accent.text
 
     return {
         -- Misc
 
-        concat { { '@comment' }, accent.comment },
-        { '@debug',                  palette.red.normal,    none, none, none },
-        { '@error',                  palette.red.normal,    none, none, none },
-        { '@punctuation',            palette.yellow.light,  none, none, none },
-        { '@punctuation.delimiter',  palette.yellow.light,  none, none, none },
-        { '@punctuation.bracket',    palette.yellow.light,  none, none, none },
-        { '@punctuation.special',    palette.yellow.light,  none, none, none },
+        flat { '@error', accent.diag.error },
+        flat { '@comment', accent.comment },
+        flat { '@comment.documentation', accent.comment },
+
+        -- Punctuation
+
+        flat { '@punctuation', syntax.delimiters },
+        flat { '@punctuation.delimiter', syntax.delimiters },
+        flat { '@punctuation.bracket', syntax.delimiters },
+        flat { '@punctuation.special', syntax.delimiters },
 
         -- Constants
 
-        { '@constant',               palette.fg.normal,     none, none, 'underline' },
-        { '@constant.builtin',       palette.cyan.light,    none, none, none },
-        { '@constant.macro',         palette.cyan.light,    none, none, none },
-        { '@string',                 palette.green.normal,  none, none, none },
-        { '@string.regex',           palette.blue.light,    none, none, none },
-        { '@string.escape',          palette.blue.light,    none, none, none },
-        { '@string.special',         palette.blue.light,    none, none, none },
-        { '@character',              palette.green.normal,  none, none, none },
-        { '@character.special',      palette.green.normal,  none, none, none },
-        { '@number',                 palette.green.normal,  none, none, none },
-        { '@boolean',                palette.green.normal,  none, none, none },
-        { '@float',                  palette.green.normal,  none, none, none },
+        flat { '@constant', syntax.consts },
+        flat { '@constant.builtin', syntax.consts_ext },
+        flat { '@constant.macro', syntax.consts_ext },
+        flat { '@string', syntax.literals },
+        flat { '@string.regex', syntax.literals_ext },
+        flat { '@string.escape', syntax.literals_ext },
+        flat { '@string.special', syntax.literals_ext },
+        flat { '@character', syntax.literals },
+        flat { '@character.special', syntax.literals_ext },
+        flat { '@boolean', syntax.literals },
+        flat { '@number', syntax.literals },
+        flat { '@float', syntax.literals },
 
         -- Functions
 
-        { '@function',               palette.red.normal,    none, none, none },
-        { '@function.call',          palette.red.normal,    none, none, none },
-        { '@function.builtin',       palette.red.normal,    none, none, none },
-        { '@function.macro',         palette.red.normal,    none, none, none },
-        { '@parameter',              palette.fg.normal,     none, none, none },
-        { '@method',                 palette.red.normal,    none, none, none },
-        { '@method.call',            palette.red.normal,    none, none, none },
-        { '@field',                  palette.yellow.normal, none, none, none },
-        { '@property',               palette.yellow.normal, none, none, none },
-        { '@constructor',            palette.yellow.light,  none, none, none },
+        flat { '@function', syntax.functions },
+        flat { '@function.call', syntax.functions },
+        flat { '@function.builtin', syntax.functions },
+        flat { '@function.macro', syntax.functions },
+        flat { '@method', syntax.functions },
+        flat { '@method.call', syntax.functions },
+        flat { '@parameter', syntax.identifiers },
+        flat { '@constructor', syntax.delimiters },
+        flat { '@field', syntax.fields },
+        flat { '@property', syntax.fields },
 
         -- Keywords
 
-        { '@conditional',            palette.blue.light,    none, none, none },
-        { '@repeat',                 palette.blue.light,    none, none, none },
-        { '@label',                  palette.blue.light,    none, none, none },
-        { '@keyword',                palette.yellow.light,  none, none, none },
-        { '@keyword.function',       palette.yellow.light,  none, none, none },
-        { '@keyword.operator',       palette.yellow.light,  none, none, none },
-        { '@keyword.return',         palette.yellow.light,  none, none, none },
-        { '@operator',               palette.fg.normal,     none, none, none },
-        { '@exception',              palette.blue.light,    none, none, none },
-        { '@preproc',                palette.red.light,     none, none, none },
-        { '@include',                palette.red.light,     none, none, none },
-        { '@define',                 palette.red.light,     none, none, none },
-        { '@macro',                  palette.red.light,     none, none, none },
-        { '@type',                   palette.yellow.normal, none, none, none },
-        { '@type.builtin',           palette.yellow.normal, none, none, none },
-        { '@type.definition',        palette.yellow.normal, none, none, none },
-        { '@type.qualifier',         palette.yellow.normal, none, none, none },
-        { '@storageclass',           palette.yellow.light,  none, none, none },
-        { '@namespace',              palette.yellow.light,  none, none, none },
-        { '@symbol',                 palette.yellow.light,  none, none, none },
-        { '@attribute',              palette.yellow.light,  none, none, none },
+        flat { '@conditional', syntax.keywords_flow },
+        flat { '@repeat', syntax.keywords_flow },
+        flat { '@debug', syntax.keywords_flow },
+        flat { '@label', syntax.keywords_flow },
+        flat { '@exception', syntax.keywords_flow },
+        flat { '@keyword', syntax.keywords },
+        flat { '@keyword.function', syntax.keywords },
+        flat { '@keyword.operator', syntax.keywords },
+        flat { '@keyword.return', syntax.keywords },
+        flat { '@storageclass', syntax.keywords },
+        flat { '@attribute', syntax.keywords },
+        flat { '@preproc', syntax.preproc },
+        flat { '@include', syntax.preproc },
+        flat { '@define', syntax.preproc },
+        flat { '@macro', syntax.preproc },
+        flat { '@type', syntax.types },
+        flat { '@type.builtin', syntax.types },
+        flat { '@type.definition', syntax.types },
+        flat { '@type.qualifier', syntax.types },
+        flat { '@operator', syntax.operators },
+        flat { '@namespace', syntax.delimiters },
+        flat { '@symbol', syntax.delimiters },
 
         -- Variables
 
-        { '@variable',               palette.fg.normal,     none, none, none },
-        { '@variable.builtin',       palette.fg.normal,     none, none, none },
+        flat { '@variable', syntax.identifiers },
+        flat { '@variable.builtin', syntax.identifiers },
 
         -- Text
 
-        { '@text',                   palette.fg.normal,     none, none, none },
-        { '@text.strong',            palette.fg.normal,     none, none, 'bold' },
-        { '@text.emphasis',          palette.fg.normal,     none, none, 'italic' },
-        { '@text.underline',         palette.fg.normal,     none, none, 'underline' },
-        { '@text.strike',            palette.fg.normal,     none, none, 'strikethrough' },
-        { '@text.title',             palette.red.normal,    none, none, 'bold' },
-        { '@text.literal',           palette.red.normal,    none, none, none },
-        { '@text.uri',               palette.blue.normal,   none, none, 'underline' },
-        { '@text.math',              palette.yellow.normal, none, none, none },
-        { '@text.environment',       palette.cyan.normal,   none, none, none },
-        { '@text.environmentName',   palette.cyan.normal,   none, none, none },
-        { '@text.reference',         palette.blue.normal,   none, none, none },
-        { '@text.note',              palette.green.normal,  none, none, 'reverse' },
-        { '@text.warning',           palette.yellow.normal, none, none, 'reverse' },
-        { '@text.danger',            palette.red.normal,    none, none, 'reverse' },
-        { '@todo',                   palette.blue.normal,   none, none, 'reverse' },
+        flat { '@text', text.normal },
+        flat { '@text.strong', text.strong },
+        flat { '@text.emphasis', text.emphasis },
+        flat { '@text.underline', text.underline },
+        flat { '@text.strike', text.strike },
+        flat { '@text.title', text.title },
+        flat { '@text.literal', text.literal },
+        flat { '@text.uri', text.uri },
+        flat { '@text.math', text.math },
+        flat { '@text.environment', text.environment },
+        flat { '@text.environmentName', text.environmentName },
+        flat { '@text.reference', text.reference },
+        flat { '@text.note', text.note },
+        flat { '@text.warning', text.warning },
+        flat { '@text.danger', text.danger },
+        flat { '@todo', text.todo },
 
         -- Tags
 
-        { '@tag',                    palette.yellow.normal, none, none, none },
-        { '@tag.attribute',          palette.red.normal,    none, none, none },
-        { '@tag.delimiter',          palette.yellow.normal, none, none, none },
+        flat { '@tag', syntax.fields },
+        flat { '@tag.attribute', syntax.functions },
+        flat { '@tag.delimiter', syntax.delimiters },
 
         -- Lsp
 
-        { '@lsp.type.comment',       none,                  none, none, none },
-        { '@lsp.type.variable',      none,                  none, none, none },
-        { '@lsp.type.property',      none,                  none, none, none },
-        { '@lsp.type.parameter',     none,                  none, none, none },
-        { '@lsp.type.function',      none,                  none, none, none },
-        { '@lsp.type.macro',         none,                  none, none, none },
-        { '@lsp.type.enum',          none,                  none, none, none },
-        { '@lsp.type.enumMember',    none,                  none, none, none },
-        { '@lsp.type.type',          none,                  none, none, none },
-        { '@lsp.type.typeParameter', none,                  none, none, none },
-        { '@lsp.type.struct',        none,                  none, none, none },
-        { '@lsp.type.class',         none,                  none, none, none },
-        { '@lsp.type.method',        none,                  none, none, none },
-        { '@lsp.type.namespace',     none,                  none, none, none },
-        { '@lsp.type.interface',     none,                  none, none, none },
-        { '@lsp.type.decorator',     none,                  none, none, none },
+        flat { '@lsp.type.comment', accent.empty },
+        flat { '@lsp.type.variable', accent.empty },
+        flat { '@lsp.type.property', accent.empty },
+        flat { '@lsp.type.parameter', accent.empty },
+        flat { '@lsp.type.function', accent.empty },
+        flat { '@lsp.type.macro', accent.empty },
+        flat { '@lsp.type.enum', accent.empty },
+        flat { '@lsp.type.enumMember', accent.empty },
+        flat { '@lsp.type.type', accent.empty },
+        flat { '@lsp.type.typeParameter', accent.empty },
+        flat { '@lsp.type.struct', accent.empty },
+        flat { '@lsp.type.class', accent.empty },
+        flat { '@lsp.type.method', accent.empty },
+        flat { '@lsp.type.namespace', accent.empty },
+        flat { '@lsp.type.interface', accent.empty },
+        flat { '@lsp.type.decorator', accent.empty },
     }
 end

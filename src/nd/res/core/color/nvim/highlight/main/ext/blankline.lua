@@ -2,7 +2,7 @@ local tab_lib    = require 'nd.lib.core.tab'
 local type_lib   = require 'nd.lib.core.type'
 local assert_lib = require 'nd.lib.core.assert'
 
-local concat     = tab_lib.concat
+local flat       = tab_lib.flat
 
 local is_tab     = type_lib.is_tab
 
@@ -23,9 +23,9 @@ return function(config)
     local none = 'NONE'
 
     return {
-        concat { { 'IndentBlanklineChar' }, accent.comment },
-        concat { { 'IndentBlanklineSpaceChar' }, accent.comment },
-        concat { { 'IndentBlanklineSpaceCharBlankLine' }, accent.comment },
+        flat { 'IndentBlanklineChar', accent.comment },
+        flat { 'IndentBlanklineSpaceChar', accent.comment },
+        flat { 'IndentBlanklineSpaceCharBlankLine', accent.comment },
         --
         { 'IndentBlanklineContextChar',      palette.yellow.light, none, none, none },
         { 'IndentBlanklineContextStart',     palette.yellow.light, none, none, none },

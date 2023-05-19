@@ -2,7 +2,8 @@ local tab_lib    = require 'nd.lib.core.tab'
 local type_lib   = require 'nd.lib.core.type'
 local assert_lib = require 'nd.lib.core.assert'
 
-local concat     = tab_lib.concat
+local flat       = tab_lib.flat
+local clone_with = tab_lib.clone_with
 
 local is_tab     = type_lib.is_tab
 
@@ -20,52 +21,51 @@ return function(config)
     nd_assert(is_tab(palette), nd_err, 'fn(): palette must be of type table')
     nd_assert(is_tab(accent), nd_err, 'fn(): accent must be of type table')
 
-    local none = 'NONE'
+    local syntax = accent.syntax
 
     return {
-        { 'Error',          palette.red.normal,    none, none, 'reverse' },
+        flat { 'Error', accent.diag.error },
+        flat { 'Comment', accent.comment },
 
-        concat { { 'Comment' }, accent.comment },
+        flat { 'Constant', syntax.literals },
+        flat { 'String', syntax.literals },
+        flat { 'Character', syntax.literals },
+        flat { 'Number', syntax.literals },
+        flat { 'Float', syntax.literals },
+        flat { 'Boolean', syntax.literals },
 
-        { 'Constant',       palette.green.normal,  none, none, none },
-        { 'String',         palette.green.normal,  none, none, none },
-        { 'Character',      palette.green.normal,  none, none, none },
-        { 'Number',         palette.green.normal,  none, none, none },
-        { 'Float',          palette.green.normal,  none, none, none },
-        { 'Boolean',        palette.green.normal,  none, none, none },
-        --
-        { 'Identifier',     palette.fg.normal,     none, none, none },
-        { 'Function',       palette.red.normal,    none, none, none },
-        --
-        { 'Statement',      palette.yellow.light,  none, none, none },
-        { 'Conditional',    palette.blue.light,    none, none, none },
-        { 'Repeat',         palette.blue.light,    none, none, none },
-        { 'Label',          palette.blue.light,    none, none, none },
-        { 'Operator',       palette.fg.normal,     none, none, none },
-        { 'Keyword',        palette.yellow.light,  none, none, none },
-        { 'Exception',      palette.blue.light,    none, none, none },
-        --
-        { 'PreProc',        palette.red.light,     none, none, none },
-        { 'PreCondit',      palette.red.light,     none, none, none },
-        { 'Include',        palette.red.light,     none, none, none },
-        { 'Define',         palette.red.light,     none, none, none },
-        { 'Macro',          palette.red.light,     none, none, none },
-        --
-        { 'Type',           palette.yellow.normal, none, none, none },
-        { 'StorageClass',   palette.yellow.normal, none, none, none },
-        { 'Structure',      palette.yellow.normal, none, none, none },
-        { 'Typedef',        palette.yellow.normal, none, none, none },
-        --
-        { 'Tag',            palette.yellow.light,  none, none, 'bold' },
-        { 'Special',        palette.yellow.light,  none, none, none },
-        { 'SpecialChar',    palette.yellow.light,  none, none, none },
-        { 'SpecialComment', palette.yellow.light,  none, none, none },
-        { 'Delimiter',      palette.yellow.light,  none, none, 'bold' },
-        { 'Debug',          palette.red.normal,    none, none, none },
-        --
-        { 'Todo',           palette.blue.normal,   none, none, 'reverse' },
-        { 'Bold',           palette.fg.normal,     none, none, 'bold' },
-        { 'Italic',         palette.fg.normal,     none, none, 'italic' },
-        { 'Underlined',     palette.fg.normal,     none, none, 'underline' },
+        flat { 'Identifier', syntax.identifiers },
+        flat { 'Function', syntax.functions },
+
+        flat { 'Statement', syntax.keywords },
+        flat { 'Keyword', syntax.keywords },
+        flat { 'Conditional', syntax.keywords_flow },
+        flat { 'Repeat', syntax.keywords_flow },
+        flat { 'Label', syntax.keywords_flow },
+        flat { 'Exception', syntax.keywords_flow },
+        flat { 'Operator', syntax.operators },
+
+        flat { 'PreProc', syntax.preproc },
+        flat { 'PreCondit', syntax.preproc },
+        flat { 'Include', syntax.preproc },
+        flat { 'Define', syntax.preproc },
+        flat { 'Macro', syntax.preproc },
+
+        flat { 'Type', syntax.types },
+        flat { 'StorageClass', syntax.types },
+        flat { 'Structure', syntax.types },
+        flat { 'Typedef', syntax.types },
+
+        flat { 'Special', syntax.literals_ext },
+        flat { 'SpecialChar', syntax.literals_ext },
+        flat { 'SpecialComment', syntax.literals_ext },
+        flat { 'Tag', clone_with(syntax.delimiters, { [4] = 'bold' }) },
+        flat { 'Delimiter', clone_with(syntax.delimiters, { [4] = 'bold' }) },
+        flat { 'Debug', syntax.functions },
+
+        flat { 'Todo', accent.note.todo },
+        flat { 'Bold', accent.text.strong },
+        flat { 'Italic', accent.text.emphasis },
+        flat { 'Underlined', accent.text.underline },
     }
 end
