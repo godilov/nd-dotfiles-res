@@ -28,7 +28,7 @@ return function(config)
         error = { palette.red.normal, none, none, none },
         warn  = { palette.yellow.normal, none, none, none },
         info  = { palette.green.normal, none, none, none },
-        hint  = { palette.blue.normal, none, none, none },
+        hint  = { palette.fg.normal, none, none, none },
     }
 
     local note = {
@@ -56,7 +56,7 @@ return function(config)
             literals      = { palette.green.normal, none, none, none },
             literals_ext  = { palette.blue.light, none, none, none },
             keywords      = { palette.yellow.light, none, none, none },
-            keywords_flow = { palette.blue.normal, none, none, none },
+            keywords_flow = { palette.blue.light, none, none, none },
             operators     = { palette.fg.normal, none, none, none },
             delimiters    = { palette.yellow.light, none, none, none },
         },
