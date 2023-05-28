@@ -15,15 +15,19 @@ return function(config)
 
     local palette_cfg = config.palette or config.scheme
     local accent_cfg  = config.accent or config.scheme
+    local theme_cfg   = config.theme or config.scheme
 
     nd_assert(palette_cfg, nd_err, 'fn(): palette must be of type value')
     nd_assert(accent_cfg, nd_err, 'fn(): accent must be of type value')
+    nd_assert(theme_cfg, nd_err, 'fn(): theme must be of type value')
 
     local palette = load_fn('nd.res.core.color.palette', palette_cfg, {})
     local accent  = load_fn('nd.res.core.color.awesome.accent', accent_cfg, { palette = palette })
+    local theme   = load_fn('nd.res.core.color.awesome.theme', theme_cfg, { palette = palette, accent = accent })
 
     return {
         palette = palette,
         accent  = accent,
+        theme   = theme,
     }
 end

@@ -14,7 +14,6 @@ return function(config)
     return {
         core     = palette.black,
         emphasis = palette.yellow,
-        focus    = palette.red,
         text     = palette.white,
     }
 end
