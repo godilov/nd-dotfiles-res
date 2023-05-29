@@ -1,15 +1,10 @@
-local str_lib    = require 'nd.lib.core.str'
 local type_lib   = require 'nd.lib.core.type'
 local assert_lib = require 'nd.lib.core.assert'
-
-local concat2s   = str_lib.concat2s
 
 local is_tab     = type_lib.is_tab
 
 local nd_assert  = assert_lib.get_fn(ND_RES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.key.awesome.main.key.root'
-
-local date       = os.date
 
 return function(config)
     local api = config.api
@@ -22,35 +17,28 @@ return function(config)
     local naughty = api.naughty
     local menubar = api.menubar
     local client  = api.client
+    local media   = api.media
 
     nd_assert(awful, nd_err, 'fn(): api.awful must be of type value')
     nd_assert(naughty, nd_err, 'fn(): api.naughty must be of type value')
     nd_assert(menubar, nd_err, 'fn(): api.menubar must be of type value')
     nd_assert(client, nd_err, 'fn(): api.client must be of type value')
+    nd_assert(media, nd_err, 'fn(): api.media must be of type value')
 
     return {
-        { { mod.super }, 'F9',  awesome.restart, {} },
-        { { mod.super }, 'F12', awesome.quit,    {} },
-
-        { {}, 'Print', function()
-            local path = concat2s('~/Pictures/Screenshots/', date '%Y-%m-%d_%H-%M-%S.png')
-
-            awful.spawn.with_shell(concat2s('shotgun -s ', path))
-
-            naughty.notify {
-                text = concat2s('Screenshot: ', path),
-            }
-        end, {}, },
-        { { mod.super },            '=', function() awful.spawn 'pactl set-sink-volume @DEFAULT_SINK@ +10%' end, {} },
-        { { mod.super },            '-', function() awful.spawn 'pactl set-sink-volume @DEFAULT_SINK@ -10%' end, {} },
-        { { mod.super },            '[', function() awful.spawn 'light -A 5' end,                                {} },
-        { { mod.super },            ']', function() awful.spawn 'light -U 5' end,                                {} },
-        { { mod.super },            'h', function() awful.client.focus.byidx(-1) end,                            {} },
-        { { mod.super },            'l', function() awful.client.focus.byidx(1) end,                             {} },
-        { { mod.super },            'j', function() awful.screen.focus_relative(-1) end,                         {} },
-        { { mod.super },            'k', function() awful.screen.focus_relative(1) end,                          {} },
-        { { mod.super, mod.shift }, 'h', function() awful.client.swap.byidx(-1) end,                             {} },
-        { { mod.super, mod.shift }, 'l', function() awful.client.swap.byidx(1) end,                              {} },
+        { { mod.super },            'F9',    awesome.restart,                                {} },
+        { { mod.super },            'F12',   awesome.quit,                                   {} },
+        { {},                       'Print', media.screen.print,                             {} },
+        { { mod.super },            '=',     function() media.sound.add(10) end,             {} },
+        { { mod.super },            '-',     function() media.sound.add(-10) end,            {} },
+        { { mod.super },            '[',     function() media.light.add(10) end,             {} },
+        { { mod.super },            ']',     function() media.light.add(-10) end,            {} },
+        { { mod.super },            'h',     function() awful.client.focus.byidx(-1) end,    {} },
+        { { mod.super },            'l',     function() awful.client.focus.byidx(1) end,     {} },
+        { { mod.super },            'j',     function() awful.screen.focus_relative(-1) end, {} },
+        { { mod.super },            'k',     function() awful.screen.focus_relative(1) end,  {} },
+        { { mod.super, mod.shift }, 'h',     function() awful.client.swap.byidx(-1) end,     {} },
+        { { mod.super, mod.shift }, 'l',     function() awful.client.swap.byidx(1) end,      {} },
         -- { { mod.super, mod.shift }, 'j', {}, {}}, -- Defined by client
         -- { { mod.super, mod.shift }, 'k', {}, {}}, -- Defined by client
 
