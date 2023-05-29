@@ -52,7 +52,7 @@ return function(config)
             identifiers   = { palette.fg.normal, none, none, none },
             preproc       = { palette.red.light, none, none, none },
             consts        = { palette.fg.normal, none, none, 'underline' },
-            consts_ext    = { palette.cyan.light, none, none, 'underline' },
+            consts_ext    = { palette.yellow.normal, none, none, none },
             literals      = { palette.green.normal, none, none, none },
             literals_ext  = { palette.blue.light, none, none, none },
             keywords      = { palette.yellow.light, none, none, none },
