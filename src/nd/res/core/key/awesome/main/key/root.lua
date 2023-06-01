@@ -29,10 +29,10 @@ return function(config)
         { { mod.super },            'F9',    awesome.restart,                                {} },
         { { mod.super },            'F12',   awesome.quit,                                   {} },
         { {},                       'Print', media.screen.print,                             {} },
-        { { mod.super },            '=',     function() media.sound.add(10) end,             {} },
-        { { mod.super },            '-',     function() media.sound.add(-10) end,            {} },
-        { { mod.super },            '[',     function() media.light.add(10) end,             {} },
-        { { mod.super },            ']',     function() media.light.add(-10) end,            {} },
+        { { mod.super },            '=',     function() media.sound.add(nil, 10) end,        {} },
+        { { mod.super },            '-',     function() media.sound.add(nil, -10) end,       {} },
+        { { mod.super },            '[',     function() media.light.add(nil, 10) end,        {} },
+        { { mod.super },            ']',     function() media.light.add(nil, -10) end,       {} },
         { { mod.super },            'h',     function() awful.client.focus.byidx(-1) end,    {} },
         { { mod.super },            'l',     function() awful.client.focus.byidx(1) end,     {} },
         { { mod.super },            'j',     function() awful.screen.focus_relative(-1) end, {} },
@@ -72,5 +72,10 @@ return function(config)
         end, {}, },
         { { mod.super }, mod.enter, function() awful.spawn 'alacritty' end, {} },
         { { mod.super }, mod.space, function() menubar.show() end,          {} },
+        { { mod.super }, '`', function()
+            for s in screen do
+                s.wibar.visible = not s.wibar.visible
+            end
+        end, {}, },
     }
 end
