@@ -26,7 +26,7 @@ is_color_ok = function(x, _)
 end
 
 is_key_ok = function(x, _)
-    return x and is_tab(x.scheme)
+    return is_tab(x)
 end
 
 get_bench_cases = function()
@@ -44,6 +44,13 @@ get_bench_cases = function()
             opts = opts,
             args = {
                 scheme = 'main',
+                api = {
+                    nvim = {},
+                    telescope = {},
+                    tree = {},
+                    cmp = {},
+                    snip = {},
+                },
                 leader = {
                     files    = ';',
                     lsp_goto = 'g',
@@ -75,6 +82,7 @@ get_test_cases = function()
                 palette   = 'main',
                 accent    = 'main',
                 highlight = 'main',
+                etc       = 'main',
                 special   = 'main',
             },
             res = {},
@@ -86,6 +94,13 @@ get_test_cases = function()
             opts = opts,
             args = {
                 scheme = 'main',
+                api = {
+                    nvim = {},
+                    telescope = {},
+                    tree = {},
+                    cmp = {},
+                    snip = {},
+                },
                 leader = {
                     files    = ';',
                     lsp_goto = 'g',
