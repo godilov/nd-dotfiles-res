@@ -1,3 +1,4 @@
 [submodule "src/nd/lib"]
 	path = ext/nd/lib
 	url = https://github.com/GermanOdilov/nd-dotfiles-lib.git
+    branch = main
