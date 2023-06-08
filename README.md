@@ -24,7 +24,7 @@ After `init()` you can easily call `require 'nd.res.core.(module)'` for core mod
 
 ## Philosophy
 
-The library was created to fulfill store 2 core components of [AwesomeWM](https://github.com/GermanOdilov/nd-dotfiles-awesome) and [Nvim](https://github.com/GermanOdilov/nd-dotfiles-nvim) config and extra:
+The library was created to fulfill store 2 core components of [Awesome WM](https://github.com/GermanOdilov/nd-dotfiles-awesome) and [Nvim](https://github.com/GermanOdilov/nd-dotfiles-nvim) config and extra:
 - Color schemes
 - Key schemes
 - Caching
