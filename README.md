@@ -12,7 +12,7 @@ The library depends on [nd-dotfiles-lib](https://github.com/GermanOdilov/nd-dotf
 
 ## Usage
 
-To include the library, simply place its source code somewhere in your working tree and then call `init()` function from [init](../main/src/init.lua) module.  
+To include the library, simply place its source code somewhere in your working tree and then call `init()` function from [init](src/init.lua) module.  
 The function takes 2 arguments:
 - `root`: path (relative or absolute) to your working directory. Default: `'.'`
 - `is_debug`: flag whether the library in debug mode for error assertion. Used only for assertion. Default: `false`
