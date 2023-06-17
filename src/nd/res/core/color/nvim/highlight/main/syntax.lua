@@ -24,8 +24,6 @@ return function(config)
     local syntax = accent.syntax
 
     return {
-        flat { 'LspInlayHint', accent.comment },
-
         flat { 'Error', accent.diag.error },
         flat { 'Comment', accent.comment },
 

@@ -27,7 +27,8 @@ return function(config)
     local lsp_goto = leader.lsp_goto
 
     return function()
-        local diag = api.nvim.diagnostic
+        local diag  = api.nvim.diagnostic
+        local inlay = api.inlay
 
         return {
             { 'n', concat2s(lsp, 'q'),      '<CMD>Telescope diagnostics<CR>',           opts },
@@ -42,6 +43,7 @@ return function(config)
             { 'n', concat2s(lsp, 'o'),      '<CMD>Telescope lsp_outgoing_calls<CR>',    opts },
             { 'n', concat2s(lsp, 'sd'),     '<CMD>Telescope lsp_document_symbols<CR>',  opts },
             { 'n', concat2s(lsp, 'sw'),     '<CMD>Telescope lsp_workspace_symbols<CR>', opts },
+            { 'n', concat2s(lsp, '\\'),     inlay.toggle,                               opts },
         }
     end
 end
