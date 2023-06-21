@@ -6,12 +6,21 @@ local is_tab     = type_lib.is_tab
 local nd_assert  = assert_lib.get_fn(ND_RES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.key.awesome.main.key.root'
 
+
+local event_fn = function(fn)
+    return function(val)
+        return fn(val)
+    end
+end
+
 return function(config)
-    local api = config.api
-    local mod = config.mod.key
+    local api   = config.api
+    local mod   = config.mod.key
+    local event = config.event
 
     nd_assert(is_tab(api), nd_err, 'fn(): api must be of type table')
     nd_assert(is_tab(mod), nd_err, 'fn(): mod.key must be of type table')
+    nd_assert(is_tab(event), nd_err, 'fn(): event must be of type table')
 
     local awful   = api.awful
     local naughty = api.naughty
@@ -26,19 +35,35 @@ return function(config)
     nd_assert(media, nd_err, 'fn(): api.media must be of type value')
 
     return {
-        { { mod.super },            'F9',    awesome.restart,                                {} },
-        { { mod.super },            'F12',   awesome.quit,                                   {} },
-        { {},                       'Print', media.screen.print,                             {} },
-        { { mod.super },            '=',     function() media.sound.add(nil, 10) end,        {} },
-        { { mod.super },            '-',     function() media.sound.add(nil, -10) end,       {} },
-        { { mod.super },            '[',     function() media.light.add(nil, 10) end,        {} },
-        { { mod.super },            ']',     function() media.light.add(nil, -10) end,       {} },
-        { { mod.super },            'h',     function() awful.client.focus.byidx(-1) end,    {} },
-        { { mod.super },            'l',     function() awful.client.focus.byidx(1) end,     {} },
-        { { mod.super },            'j',     function() awful.screen.focus_relative(-1) end, {} },
-        { { mod.super },            'k',     function() awful.screen.focus_relative(1) end,  {} },
-        { { mod.super, mod.shift }, 'h',     function() awful.client.swap.byidx(-1) end,     {} },
-        { { mod.super, mod.shift }, 'l',     function() awful.client.swap.byidx(1) end,      {} },
+        { { mod.super }, 'F9',    awesome.restart,    {} },
+        { { mod.super }, 'F12',   awesome.quit,       {} },
+        { {},            'Print', media.screen.print, {} },
+        { { mod.super }, '=', function()
+            media.sound.add(nil, 10)
+
+            media.sound.get_val(event_fn(event.on_sound))
+        end, {}, },
+        { { mod.super }, '-', function()
+            media.sound.add(nil, -10)
+
+            media.sound.get_val(event_fn(event.on_sound))
+        end, {}, },
+        { { mod.super }, '[', function()
+            media.light.add(nil, 10)
+
+            media.sound.get_val(event_fn(event.on_light))
+        end, {}, },
+        { { mod.super }, ']', function()
+            media.light.add(nil, -10)
+
+            media.sound.get_val(event_fn(event.on_light))
+        end, {}, },
+        { { mod.super },            'h', function() awful.client.focus.byidx(-1) end,    {} },
+        { { mod.super },            'l', function() awful.client.focus.byidx(1) end,     {} },
+        { { mod.super },            'j', function() awful.screen.focus_relative(-1) end, {} },
+        { { mod.super },            'k', function() awful.screen.focus_relative(1) end,  {} },
+        { { mod.super, mod.shift }, 'h', function() awful.client.swap.byidx(-1) end,     {} },
+        { { mod.super, mod.shift }, 'l', function() awful.client.swap.byidx(1) end,      {} },
         -- { { mod.super, mod.shift }, 'j', {}, {}}, -- Defined by client
         -- { { mod.super, mod.shift }, 'k', {}, {}}, -- Defined by client
 
@@ -60,8 +85,16 @@ return function(config)
                 c:emit_signal 'request::activate'
             end
         end, {}, },
-        { { mod.super, mod.alt }, 'h', awful.tag.viewprev, {} },
-        { { mod.super, mod.alt }, 'l', awful.tag.viewnext, {} },
+        { { mod.super, mod.alt }, 'h', function(...)
+            event.on_tag()
+
+            return awful.tag.viewprev(...)
+        end, {}, },
+        { { mod.super, mod.alt }, 'l', function(...)
+            event.on_tag()
+
+            return awful.tag.viewnext(...)
+        end, {}, },
         -- { { mod.super, mod.alt }, 'j', {}, {}}, -- Defined by client
         -- { { mod.super, mod.alt }, 'k', {}, {}}, -- Defined by client
 

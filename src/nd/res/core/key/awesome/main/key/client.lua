@@ -7,11 +7,13 @@ local nd_assert  = assert_lib.get_fn(ND_RES_IS_DEBUG)
 local nd_err     = assert_lib.get_err_fn 'nd.res.core.key.awesome.main.key.client'
 
 return function(config)
-    local api = config.api
-    local mod = config.mod.key
+    local api   = config.api
+    local mod   = config.mod.key
+    local event = config.event
 
     nd_assert(is_tab(api), nd_err, 'fn(): api must be of type table')
     nd_assert(is_tab(mod), nd_err, 'fn(): mod.key must be of type table')
+    nd_assert(is_tab(event), nd_err, 'fn(): event must be of type table')
 
     local awful  = api.awful
     local client = api.client
@@ -36,6 +38,8 @@ return function(config)
             c:move_to_tag(tags[ind_next])
 
             awful.tag.viewidx(i)
+
+            event.on_tag()
         end
     end
 
