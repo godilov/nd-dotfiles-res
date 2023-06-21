@@ -1,5 +1,9 @@
 return function(_)
     return {
-        ['rust-analyzer'] = {},
+        ['rust-analyzer'] = {
+            checkOnSave = {
+                command = 'clippy',
+            },
+        },
     }
 end

@@ -13,6 +13,7 @@ return function()
         { 'kyazdani42',      'nvim-tree.lua' },
         { 'nvim-telescope',  'telescope.nvim' },
         { 'mfussenegger',    'nvim-dap' },
+        { 'lvimuser',        'lsp-inlayhints.nvim' },
         { 'williamboman',    'mason.nvim' },
         { 'williamboman',    'mason-lspconfig.nvim' },
         { 'neovim',          'nvim-lspconfig' },
