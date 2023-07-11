@@ -16,6 +16,7 @@ local tree_fn       = require 'nd.res.core.key.nvim.main.ext.tree'
 local cmp_fn        = require 'nd.res.core.key.nvim.main.ext.cmp'
 
 return function(config)
+    nd_assert(is_tab(config), nd_err, 'fn(): config must be of type table')
     nd_assert(is_tab(config.api), nd_err, 'fn(): api must be of type table')
     nd_assert(is_tab(config.leader), nd_err, 'fn(): leader must be of type table')
     nd_assert(is_tab(config.opts) or not config.opts, nd_err, 'fn(): opts must be of type table or nil')

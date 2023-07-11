@@ -16,7 +16,7 @@ return function(config)
     return {
         raw = {
             font          = 'Fira Code Bold 8.5',
-            wallpaper     = '/usr/share/backgrounds/wallpapers/Nature/mountains_and_forest.jpg',
+            wallpaper     = '/usr/share/backgrounds/wallpapers/Colors/Black/sand.png',
             bg_normal     = accent.core.dark,
             bg_systray    = accent.core.dark,
             bg_minimize   = accent.core.light,
