@@ -14,6 +14,7 @@ return function()
         { 'nvim-telescope',  'telescope.nvim' },
         { 'mfussenegger',    'nvim-dap' },
         { 'lvimuser',        'lsp-inlayhints.nvim' },
+        { 'Saecki',          'crates.nvim' },
         { 'williamboman',    'mason.nvim' },
         { 'williamboman',    'mason-lspconfig.nvim' },
         { 'neovim',          'nvim-lspconfig' },

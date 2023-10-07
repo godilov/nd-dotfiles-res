@@ -81,8 +81,8 @@ return function(config)
         { 'Visual',       palette.bg.normal,     palette.yellow.light,  none, none },
         --
         { 'Title',        palette.red.normal,    none,                  none, 'bold' },
-        { 'Pmenu',        palette.fg.normal,     palette.bg.normal,     none, none },
-        { 'PmenuSel',     palette.bg.normal,     palette.yellow.light,  none, none },
+        { 'Pmenu',        palette.white.light,   palette.black.dark,    none, none },
+        { 'PmenuSel',     palette.black.dark,    palette.yellow.light,  none, none },
         { 'PmenuSbar',    none,                  palette.bg.normal,     none, none },
         { 'PmenuThumb',   none,                  palette.yellow.light,  none, none },
         --

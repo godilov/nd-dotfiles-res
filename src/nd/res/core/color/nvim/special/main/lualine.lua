@@ -17,7 +17,7 @@ abc_fn = function(color_rgb, bg_rgb, _, bg, fg)
     return {
         a = { fg = bg, bg = as_hex(1.0 * color_rgb + 0.0 * bg_rgb), gui = 'bold' },
         b = { fg = fg, bg = as_hex(0.5 * color_rgb + 0.5 * bg_rgb) },
-        c = { fg = fg, bg = as_hex(0.0 * color_rgb + 1.0 * bg_rgb) },
+        c = { fg = fg, bg = nil },
     }
 end
 

@@ -1,7 +1,7 @@
 return function(_)
     return {
         fg = {
-            normal = '#f2f2f2',
+            normal = '#ffffff',
         },
         bg = {
             normal = '#0d0d0d',
@@ -42,9 +42,9 @@ return function(_)
             light  = '#99ffff',
         },
         white = {
-            dark   = '#cccccc',
-            normal = '#d9d9d9',
-            light  = '#e6e6e6',
+            dark   = '#d9d9d9',
+            normal = '#e6e6e6',
+            light  = '#f2f2f2',
         },
     }
 end
