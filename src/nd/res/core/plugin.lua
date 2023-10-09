@@ -8,7 +8,6 @@ return function()
         { 'nvim-lualine',    'lualine.nvim' },
         { 'nvim-treesitter', 'nvim-treesitter' },
         { 'nvim-treesitter', 'playground' },
-        { 'lukas-reineke',   'indent-blankline.nvim' },
         { 'norcalli',        'nvim-colorizer.lua' },
         { 'kyazdani42',      'nvim-tree.lua' },
         { 'nvim-telescope',  'telescope.nvim' },

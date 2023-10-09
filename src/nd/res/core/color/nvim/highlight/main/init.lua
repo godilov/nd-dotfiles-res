@@ -13,7 +13,6 @@ local editor_fn     = require 'nd.res.core.color.nvim.highlight.main.editor'
 local syntax_fn     = require 'nd.res.core.color.nvim.highlight.main.syntax'
 
 local packer_fn     = require 'nd.res.core.color.nvim.highlight.main.ext.packer'
-local blankline_fn  = require 'nd.res.core.color.nvim.highlight.main.ext.blankline'
 local treesitter_fn = require 'nd.res.core.color.nvim.highlight.main.ext.treesitter'
 local telescope_fn  = require 'nd.res.core.color.nvim.highlight.main.ext.telescope'
 local tree_fn       = require 'nd.res.core.color.nvim.highlight.main.ext.tree'
@@ -27,7 +26,6 @@ return function(config)
         editor_fn(config),
         syntax_fn(config),
         packer_fn(config),
-        blankline_fn(config),
         treesitter_fn(config),
         telescope_fn(config),
         tree_fn(config),
