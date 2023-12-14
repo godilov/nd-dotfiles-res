@@ -4,6 +4,9 @@ return function(_)
             check = {
                 command = 'clippy',
             },
+            rustfmt = {
+                extraArgs = { '+nightly' },
+            },
         },
     }
 end
