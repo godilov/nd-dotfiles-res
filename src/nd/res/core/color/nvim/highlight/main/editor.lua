@@ -66,7 +66,7 @@ return function(config)
         flat { 'DiagnosticSignInfo', accent.diag.info },
         flat { 'DiagnosticSignHint', accent.diag.hint },
         --
-        { 'WinSeparator', palette.bg.normal,     palette.bg.normal,     none, none },
+        { 'WinSeparator', palette.black.light,   none,                  none, none },
         { 'EndOfBuffer',  palette.yellow.light,  none,                  none, none },
         { 'SignColumn',   none,                  none,                  none, none },
         --

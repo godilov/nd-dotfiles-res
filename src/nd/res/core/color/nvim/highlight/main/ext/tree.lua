@@ -20,6 +20,10 @@ return function(config)
     local none = 'NONE'
 
     return {
+        { 'NvimTreeNormal',            none,                  none, none, none,  'Normal' },
+        { 'NvimTreeNormalFloat',       none,                  none, none, none,  'NvimTreeNormal' },
+        { 'NvimTreeNormalNC',          none,                  none, none, none,  'NvimTreeNormal' },
+        { 'NvimTreeWindowPicker',      none,                  none, none, none },
         { 'NvimTreeSymlink',           none,                  none, none, none },
         { 'NvimTreeSymlinkIcon',       none,                  none, none, none },
         { 'NvimTreeSymlinkFolderName', none,                  none, none, none },
